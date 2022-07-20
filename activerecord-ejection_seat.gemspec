@@ -8,17 +8,21 @@ Gem::Specification.new do |spec|
   spec.authors = ["Max VelDink"]
   spec.email = ["max@audaciousaardvark.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "Eject from an ActiveRecord model to a Sorbet T::Struct, or buckle back in."
+  spec.description = "When working with ActiveRecord models, sometimes you want to eject to a simpler, safer object. \
+                      Enter Sorbet's T::Struct. This gem makes it much easier to target a \
+                      Sorbet T::Struct and eject from an ActiveRecord model into the struct. \
+                      It also allows you to buckle in from a simple struct to a new ActiveRecord model instance."
+  spec.homepage = "https://github.com/AudaciousAardvark/activerecord-ejection_seat"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
+  spec.metadata["rubygems_mfa_required"] = "true"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = "https://github.com/AudaciousAardvark/activerecord-ejection_seat/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -33,7 +37,4 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
-
-  # For more information and examples about making a new gem, check out our
-  # guide at: https://bundler.io/guides/creating_gem.html
 end
