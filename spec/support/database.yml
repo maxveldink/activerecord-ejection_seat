@@ -1,0 +1,7 @@
+username: root
+password:
+encoding: utf8
+host: localhost
+database: activerecord_ejection_seat_test
+adapter: sqlite3
+database: test.db

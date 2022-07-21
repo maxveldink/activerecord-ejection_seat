@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/activerecord/ejection_seat/version"
+require_relative "lib/activerecord-ejection_seat/version"
 
 Gem::Specification.new do |spec|
   spec.name = "activerecord-ejection_seat"
-  spec.version = Activerecord::EjectionSeat::VERSION
+  spec.version = ActiveRecord::EjectionSeat::VERSION
   spec.authors = ["Max VelDink"]
   spec.email = ["max@audaciousaardvark.com"]
 
@@ -35,6 +35,5 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_runtime_dependency "activerecord", ">= 5.2"
 end
