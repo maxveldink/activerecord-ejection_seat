@@ -29,7 +29,7 @@ end
 yaml_config = if RUBY_VERSION >= "3.0.0"
                 YAML.safe_load_file(test_dir.join("support/database.yml"), aliases: true)
               else
-                YAML.load_file(test_dir.join("support/database.yml"), aliases: true)
+                YAML.load_file(test_dir.join("support/database.yml"))
               end
 config = ActiveRecord::DatabaseConfigurations::HashConfig.new("test", "sqlite3", yaml_config)
 ActiveRecord::Base.configurations.configurations << config
