@@ -26,7 +26,7 @@ RSpec.configure do |config|
   config.order = :random
 end
 
-yaml_config = YAML.safe_load_file(test_dir.join("support/database.yml"), aliases: true)
+yaml_config = YAML.safe_load(test_dir.join("support/database.yml"), aliases: true)
 config = ActiveRecord::DatabaseConfigurations::HashConfig.new("test", "sqlite3", yaml_config)
 ActiveRecord::Base.configurations.configurations << config
 
