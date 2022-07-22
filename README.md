@@ -20,7 +20,7 @@ Let's say you have an `ActiveRecord` model for a `User` with a string `name` col
 
 ```ruby
 module Types
-  class User
+  class User < T::Struct
     const :name, String
     const :age, Integer
   end
