@@ -1,8 +1,8 @@
-# Activerecord::EjectionSeat
+# ActiveRecord::EjectionSeat
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/activerecord/ejection_seat`. To experiment with that code, run `bin/console` for an interactive prompt.
+## ActiveRecord <=> T::Struct
 
-TODO: Delete this and the text above, and describe your gem
+Sometimes, you want to convert from an `ActiveRecord` model to something more akin to a simple data class. Enter Sorbet's `T::Struct`. This gem helps to eject out of bulky `ActiveRecord` models (or buckle into them) and work with simple `T::Struct`'s in the rest of your app.
 
 ## Installation
 
@@ -16,17 +16,51 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+Let's say you have an `ActiveRecord` model for a `User` with a string `name` column and an integer `age` column. Another way to express this would be a `User` type that is a simple, typed struct.
+
+```ruby
+module Types
+  class User
+    const :name, String
+    const :age, Integer
+  end
+end
+```
+
+In our model, we can specify an ejection to this type.
+
+```ruby
+class User
+  ejects_to Types::User
+end
+```
+
+Now, we have two new methods available on `User`. First, we can eject from a `User` instance to a `Types::User`.
+
+```ruby
+User.new(name: "Max", age: 28).eject
+# => Types::User(name: "Max", age: 28)
+User.new(name: "Max", age: 28).to_struct # alias
+```
+
+Second, we can buckle into the `User` model with a `Types::User`.
+
+```ruby
+user_struct = Types::User.new(name: "Max", age: 28)
+User.buckle(user_struct)
+# => User(name: "Max", age: 28)
+User.from_struct(user_struct) # alias
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake` to run Rubocop and the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. You'll need a schema to test `ActiveRecord` against. Check out `spec/spec_helper.rb` for an example setup.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/activerecord-ejection_seat. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/audaciousaardvark/activerecord-ejection_seat. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/audaciousaardvark/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -34,4 +68,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Activerecord::EjectionSeat project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in this project's codebase, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/audaciousaardvark/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
