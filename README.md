@@ -2,7 +2,7 @@
 
 ## ActiveRecord <=> T::Struct
 
-Sometimes, you want to convert from an `ActiveRecord` model to something more akin to a simple data class. Enter Sorbet's `T::Struct`. This gem helps to eject out of bulky `ActiveRecord` models (or buckle into them) and work with simple `T::Struct`'s in the rest of your app.
+Sometimes, you want to convert from an `ActiveRecord` model to something more akin to a simple data class. Enter [Sorbet's `T::Struct`](https://sorbet.org/docs/tstruct). This gem helps to eject out of bulky `ActiveRecord` models (or buckle into them) and work with simple `T::Struct`'s in the rest of your app.
 
 ## Installation
 
