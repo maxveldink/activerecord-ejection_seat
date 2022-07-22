@@ -1,9 +1,9 @@
-name: Ruby
+name: Code Quality
 
 on:
   push:
     branches:
-      - master
+      - main
 
   pull_request:
 
