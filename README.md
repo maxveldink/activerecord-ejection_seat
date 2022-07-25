@@ -1,8 +1,12 @@
 # ActiveRecord::EjectionSeat
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HfCY-bkVJKM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## ActiveRecord <=> T::Struct
 
 Sometimes, you want to convert from an `ActiveRecord` model to something more akin to a simple data class. Enter [Sorbet's `T::Struct`](https://sorbet.org/docs/tstruct). This gem helps to eject out of bulky `ActiveRecord` models (or buckle into them) and work with simple `T::Struct`'s in the rest of your app.
+
+For more information about the "why" behind this gem, check out [this post](https://maxveld.ink/ejecting-out-of-an-orm/).
 
 ## Installation
 
