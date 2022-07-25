@@ -1,6 +1,6 @@
 # ActiveRecord::EjectionSeat
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HfCY-bkVJKM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/HfCY-bkVJKM/0.jpg)](http://www.youtube.com/watch?v=HfCY-bkVJKM "Introduction to activerecord-ejection_seat")
 
 ## ActiveRecord <=> T::Struct
 
