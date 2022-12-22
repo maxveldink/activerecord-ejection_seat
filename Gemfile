@@ -23,4 +23,6 @@ group :development, :test do
   gem "sorbet-runtime"
   gem "sorbet-struct-comparable"
   gem "sqlite3"
+
+  gem "debug"
 end

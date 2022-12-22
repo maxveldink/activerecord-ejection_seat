@@ -4,6 +4,7 @@
 # frozen_string_literal: true
 
 require_relative "activerecord-ejection_seat/version"
+require_relative "activerecord-ejection_seat/props_builder"
 
 require "active_support/lazy_load_hooks"
 

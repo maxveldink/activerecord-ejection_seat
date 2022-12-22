@@ -9,6 +9,7 @@ ENV["RAILS_ENV"] = "test"
 
 require "bundler"
 Bundler.setup
+require "debug"
 
 require "active_record"
 require "active_record/database_configurations"
@@ -25,6 +26,9 @@ RSpec.configure do |config|
   end
 
   config.order = :random
+
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
 end
 
 yaml_config = if RUBY_VERSION >= "3.0.0"

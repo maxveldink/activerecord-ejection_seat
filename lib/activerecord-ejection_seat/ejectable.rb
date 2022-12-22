@@ -19,7 +19,7 @@ module ActiveRecord
           attrs = attributes.deep_symbolize_keys
           attribute_props = klass.props.keys & attrs.keys
 
-          klass.new(attrs.slice(*attribute_props))
+          klass.new(PropsBuilder.new(attrs.slice(*attribute_props), klass.props).build)
         end
 
         alias_method :to_struct, :eject

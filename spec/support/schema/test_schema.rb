@@ -11,4 +11,9 @@ ActiveRecord::Schema.define do
     t.string :name
     t.integer :age
   end
+
+  create_table :posts, force: :cascade do |t|
+    t.string :title
+    t.string :status
+  end
 end

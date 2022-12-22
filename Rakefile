@@ -11,11 +11,13 @@ RuboCop::RakeTask.new do |t|
   t.options = ["-A"]
 end
 
-desc :tapioca do
+desc "Run tapioca compilers"
+task :tapioca do
   sh "bin/tapioca gem"
 end
 
-desc :sorbet do
+desc "Run Sorbet typechecker"
+task :sorbet do
   sh "bundle exec srb tc"
 end
 

@@ -8,8 +8,18 @@ RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
   let(:user_struct) { Types::User.new(name: "Max", age: 28) }
 
   describe "#eject" do
-    it "converts from ActiveRecord model to given Sorbet struct" do
+    context "when T::Struct contains simple fields"
+    it "converts from ActiveRecord model" do
       expect(user_model.eject).to eq(user_struct)
+    end
+
+    context "when Sorbet struct contains T::Enum field" do
+      let(:post_model) { Post.new(title: "Testing 123", status: "draft") }
+      let(:post_struct) { Types::Post.new(title: "Testing 123", status: Types::PostStatus::Draft) }
+
+      it "converts from ActiveRecord model" do
+        expect(post_model.eject).to eq(post_struct)
+      end
     end
   end
 
