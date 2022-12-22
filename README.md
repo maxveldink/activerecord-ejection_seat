@@ -53,14 +53,14 @@ Now, we have two new methods available on `User`. First, we can eject from a `Us
 
 ```ruby
 User.new(name: "Max", age: 28, role: "admin").eject
-# => Types::User(name: "Max", age: 28, role: Types::UserRole::Admin)
+# => Types::User(name: "Max", age: 28, role: Types::UserRoles::Admin)
 User.new(name: "Max", age: 28, role: "admin").to_struct # alias
 ```
 
 Second, we can buckle into the `User` model with a `Types::User`.
 
 ```ruby
-user_struct = Types::User.new(name: "Max", age: 28, role: Types::UserRole::Admin)
+user_struct = Types::User.new(name: "Max", age: 28, role: Types::UserRoles::Admin)
 User.buckle(user_struct)
 # => User(name: "Max", age: 28, role: "admin")
 User.from_struct(user_struct) # alias
