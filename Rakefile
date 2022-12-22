@@ -7,6 +7,16 @@ RSpec::Core::RakeTask.new(:spec)
 
 require "rubocop/rake_task"
 
-RuboCop::RakeTask.new
+RuboCop::RakeTask.new do |t|
+  t.options = ["-A"]
+end
 
-task default: %i[rubocop spec]
+desc :tapioca do
+  sh "bin/tapioca gem"
+end
+
+desc :sorbet do
+  sh "bundle exec srb tc"
+end
+
+task default: %i[rubocop sorbet spec]
