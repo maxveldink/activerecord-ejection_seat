@@ -6,6 +6,8 @@ require "spec_helper"
 RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
   let(:user_model) { User.new(name: "Max", age: 28) }
   let(:user_struct) { Types::User.new(name: "Max", age: 28) }
+  let(:post_model) { Post.new(title: "Testing 123", status: "draft") }
+  let(:post_struct) { Types::Post.new(title: "Testing 123", status: Types::PostStatus::Draft) }
 
   describe "#eject" do
     context "when T::Struct contains simple fields"
@@ -14,9 +16,6 @@ RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
     end
 
     context "when Sorbet struct contains T::Enum field" do
-      let(:post_model) { Post.new(title: "Testing 123", status: "draft") }
-      let(:post_struct) { Types::Post.new(title: "Testing 123", status: Types::PostStatus::Draft) }
-
       it "converts from ActiveRecord model" do
         expect(post_model.eject).to eq(post_struct)
       end
@@ -30,12 +29,24 @@ RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
   end
 
   describe ".buckle" do
-    it "converts into ActiveRecord model from given Sorbet struct" do
-      new_user = User.buckle(user_struct)
+    context "when T::Struct contains simple fields" do
+      it "converts into ActiveRecord model" do
+        new_user = User.buckle(user_struct)
 
-      expect(new_user).to be_a(User)
-      expect(new_user.name).to eq("Max")
-      expect(new_user.age).to eq(28)
+        expect(new_user).to be_a(User)
+        expect(new_user.name).to eq("Max")
+        expect(new_user.age).to eq(28)
+      end
+    end
+
+    context "when T::Struct contains T::Enum field" do
+      it "converts into ActiveRecord model" do
+        new_post = Post.buckle(post_struct)
+
+        expect(new_post).to be_a(Post)
+        expect(new_post.title).to eq("Testing 123")
+        expect(new_post.status).to eq("draft")
+      end
     end
 
     context "when invalid class is passed in" do
