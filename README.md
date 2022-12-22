@@ -20,13 +20,21 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-Let's say you have an `ActiveRecord` model for a `User` with a string `name` column and an integer `age` column. Another way to express this would be a `User` type that is a simple, typed struct.
+Let's say you have an `ActiveRecord` model for a `User` with a string `name` column, an integer `age` column and a `role` enum column. Another way to express this would be a `User` type that is a simple, typed struct.
 
 ```ruby
 module Types
+  class UserRoles < T::Enum
+    enums do
+      Admin = new("admin")
+      Member = new("member")
+    end
+  end
+
   class User < T::Struct
     const :name, String
     const :age, Integer
+    const :role, UserRoles
   end
 end
 ```
@@ -35,6 +43,8 @@ In our model, we can specify an ejection to this type.
 
 ```ruby
 class User
+  enum :role, { admin: "admin", member: "member" }
+
   ejects_to Types::User
 end
 ```
@@ -42,17 +52,17 @@ end
 Now, we have two new methods available on `User`. First, we can eject from a `User` instance to a `Types::User`.
 
 ```ruby
-User.new(name: "Max", age: 28).eject
-# => Types::User(name: "Max", age: 28)
-User.new(name: "Max", age: 28).to_struct # alias
+User.new(name: "Max", age: 28, role: "admin").eject
+# => Types::User(name: "Max", age: 28, role: Types::UserRole::Admin)
+User.new(name: "Max", age: 28, role: "admin").to_struct # alias
 ```
 
 Second, we can buckle into the `User` model with a `Types::User`.
 
 ```ruby
-user_struct = Types::User.new(name: "Max", age: 28)
+user_struct = Types::User.new(name: "Max", age: 28, role: Types::UserRole::Admin)
 User.buckle(user_struct)
-# => User(name: "Max", age: 28)
+# => User(name: "Max", age: 28, role: "admin")
 User.from_struct(user_struct) # alias
 ```
 
