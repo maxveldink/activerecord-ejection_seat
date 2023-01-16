@@ -3,6 +3,7 @@
 
 require "spec_helper"
 
+# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
   let(:user_model) { User.new(name: "Max", age: 28, location: location_model) }
   let(:user_struct) { Types::User.new(name: "Max", age: 28, location: location_struct) }
@@ -40,11 +41,10 @@ RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
   describe ".buckle" do
     context "when T::Struct contains simple fields" do
       it "converts into ActiveRecord model" do
-        new_user = User.buckle(user_struct)
+        new_location = Location.buckle(location_struct)
 
-        expect(new_user).to be_a(User)
-        expect(new_user.name).to eq("Max")
-        expect(new_user.age).to eq(28)
+        expect(new_location).to be_a(Location)
+        expect(new_location.name).to eq("Florida")
       end
     end
 
@@ -56,6 +56,20 @@ RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
         expect(new_post.title).to eq("Testing 123")
         expect(new_post.status).to eq("draft")
       end
+    end
+
+    context "when T::Struct contains T::Struct field" do
+      # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
+      it "converts into ActiveRecord model" do
+        new_user = User.buckle(user_struct)
+
+        expect(new_user).to be_a(User)
+        expect(new_user.name).to eq("Max")
+        expect(new_user.age).to eq(28)
+        expect(new_user.location).to be_a(Location)
+        expect(new_user.location.name).to eq("Florida")
+      end
+      # rubocop:enable RSpec/MultipleExpectations, RSpec/ExampleLength
     end
 
     context "when invalid class is passed in" do
@@ -77,3 +91,4 @@ RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
     end
   end
 end
+# rubocop:enable RSpec/MultipleMemoizedHelpers

@@ -31,10 +31,7 @@ module ActiveRecord
         define_singleton_method(:buckle) do |struct|
           raise ArgumentError if struct.class != klass
 
-          attrs = struct.serialize
-          props = attrs.keys & column_names
-
-          new(attrs.slice(*props))
+          new(AttributesBuilder.new(struct: struct, target_model: self).build)
         end
 
         singleton_class.send :alias_method, :from_struct, :buckle
