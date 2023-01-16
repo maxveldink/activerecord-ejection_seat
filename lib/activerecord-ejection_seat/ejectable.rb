@@ -16,10 +16,12 @@ module ActiveRecord
 
       def define_eject_method(klass)
         define_method(:eject) do
-          attrs = attributes.deep_symbolize_keys
-          attribute_props = klass.props.keys & attrs.keys
-
-          klass.new(PropsBuilder.new(attrs.slice(*attribute_props), klass.props).build)
+          klass.new(
+            PropsBuilder.new(
+              model: self,
+              target_struct: klass
+            ).build
+          )
         end
 
         alias_method :to_struct, :eject
@@ -29,10 +31,7 @@ module ActiveRecord
         define_singleton_method(:buckle) do |struct|
           raise ArgumentError if struct.class != klass
 
-          attrs = struct.serialize
-          props = attrs.keys & column_names
-
-          new(attrs.slice(*props))
+          new(AttributesBuilder.new(struct: struct, target_model: self).build)
         end
 
         singleton_class.send :alias_method, :from_struct, :buckle

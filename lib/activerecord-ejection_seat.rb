@@ -5,6 +5,7 @@
 
 require_relative "activerecord-ejection_seat/version"
 require_relative "activerecord-ejection_seat/props_builder"
+require_relative "activerecord-ejection_seat/attributes_builder"
 
 require "active_support/lazy_load_hooks"
 

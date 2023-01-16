@@ -7,38 +7,37 @@ require "sorbet-runtime"
 class PropsBuilder
   extend T::Sig
 
-  Attributes = T.type_alias { T::Hash[Symbol, T.untyped] }
-
   sig do
     params(
-      attributes_from_model: Attributes,
-      target_props: Attributes
+      model: ActiveRecord::Base,
+      target_struct: T.class_of(T::Struct)
     ).void
   end
-  def initialize(attributes_from_model, target_props)
-    @attributes_from_model = attributes_from_model
-    @target_props = target_props
+  def initialize(model:, target_struct:)
+    @model = model
+    @target_struct = target_struct
   end
 
-  sig { returns(Attributes) }
+  sig { returns(T::Hash[Symbol, T.untyped]) }
   def build
-    built_props = {}
+    target_struct.props.keys.each_with_object({}) do |prop_name, returned_props|
+      attribute = model.send(prop_name)
+      prop_type = target_struct.props.dig(prop_name, :type)
 
-    attributes_from_model.each do |k, v|
-      prop_type = target_props.dig(k, :type)
+      attribute = prop_type.deserialize(attribute) if prop_type < T::Enum
+      if prop_type < T::Struct
+        attribute = prop_type.new(PropsBuilder.new(model: attribute, target_struct: prop_type).build)
+      end
 
-      built_props[k] = if prop_type < T::Enum
-                         prop_type.deserialize(v)
-                       else
-                         v
-                       end
+      returned_props[prop_name] = attribute
     end
-
-    built_props
   end
 
   private
 
-  sig { returns(Attributes) }
-  attr_reader :attributes_from_model, :target_props
+  sig { returns(ActiveRecord::Base) }
+  attr_reader :model
+
+  sig { returns(T.class_of(T::Struct)) }
+  attr_reader :target_struct
 end

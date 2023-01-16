@@ -5,11 +5,9 @@ require "sorbet-runtime"
 require "sorbet-struct-comparable"
 
 module Types
-  class User < T::Struct
+  class Location < T::Struct
     include T::Struct::ActsAsComparable
 
     const :name, String
-    const :age, Integer
-    const :location, Location
   end
 end
