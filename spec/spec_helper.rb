@@ -45,5 +45,5 @@ ActiveRecord::Base.establish_connection :test
 require test_dir.join("support/schema/version").to_s
 require test_dir.join("support/schema/test_schema").to_s
 
-Dir["#{File.dirname(__FILE__)}/support/types/**/*.rb"].sort.each { |file| require file }
-Dir["#{File.dirname(__FILE__)}/support/models/**/*.rb"].sort.each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/support/types/**/*.rb"].each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/support/models/**/*.rb"].each { |file| require file }
