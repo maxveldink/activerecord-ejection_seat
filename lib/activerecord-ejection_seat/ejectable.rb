@@ -16,10 +16,12 @@ module ActiveRecord
 
       def define_eject_method(klass)
         define_method(:eject) do
-          attrs = attributes.deep_symbolize_keys
-          attribute_props = klass.props.keys & attrs.keys
-
-          klass.new(PropsBuilder.new(attrs.slice(*attribute_props), klass.props).build)
+          klass.new(
+            PropsBuilder.new(
+              model: self,
+              target_struct: klass
+            ).build
+          )
         end
 
         alias_method :to_struct, :eject

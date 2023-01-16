@@ -10,5 +10,6 @@ module Types
 
     const :name, String
     const :age, Integer
+    const :location, Location
   end
 end

@@ -4,8 +4,8 @@
 require "spec_helper"
 
 RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
-  let(:user_model) { User.new(name: "Max", age: 28) }
-  let(:user_struct) { Types::User.new(name: "Max", age: 28) }
+  let(:user_model) { User.new(name: "Max", age: 28, location: location_model) }
+  let(:user_struct) { Types::User.new(name: "Max", age: 28, location: location_struct) }
   let(:post_model) { Post.new(title: "Testing 123", status: "draft") }
   let(:post_struct) { Types::Post.new(title: "Testing 123", status: Types::PostStatus::Draft) }
   let(:location_model) { Location.new(name: "Florida") }
@@ -21,6 +21,12 @@ RSpec.describe ActiveRecord::EjectionSeat::Ejectable do
     context "when Sorbet struct contains T::Enum field" do
       it "converts from ActiveRecord model" do
         expect(post_model.eject).to eq(post_struct)
+      end
+    end
+
+    context "when Sorbet struct contains T::Struct field" do
+      it "converts from ActiveRecord model, using association" do
+        expect(user_model.eject).to eq(user_struct)
       end
     end
   end
