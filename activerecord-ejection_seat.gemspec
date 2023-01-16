@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
                       It also allows you to buckle in from a simple struct to a new ActiveRecord model instance."
   spec.homepage = "https://github.com/AudaciousAardvark/activerecord-ejection_seat"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.7.0"
+  spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["rubygems_mfa_required"] = "true"
@@ -35,6 +35,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "activerecord", ">= 5.2"
+  spec.add_runtime_dependency "activerecord", ">= 6.0"
   spec.add_runtime_dependency "sorbet-runtime"
 end
