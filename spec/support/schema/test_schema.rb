@@ -16,4 +16,8 @@ ActiveRecord::Schema.define do
     t.string :title
     t.string :status
   end
+
+  create_table :locations, force: :cascade do |t|
+    t.string :name
+  end
 end
