@@ -47407,7 +47407,7 @@ class RuboCop::Cop::Style::TrailingCommaInArguments < ::RuboCop::Cop::Base
   def on_send(node); end
 
   class << self
-    # source://rubocop-rspec/2.16.0/lib/rubocop-rspec.rb#61
+    # source://rubocop-rspec/2.18.0/lib/rubocop-rspec.rb#60
     def autocorrect_incompatible_with; end
   end
 end
@@ -53081,6 +53081,123 @@ end
 # source://rubocop//lib/rubocop/ast_aliases.rb#6
 RuboCop::ProcessedSource = RuboCop::AST::ProcessedSource
 
+# Provides a custom rake task.
+#
+# require 'rubocop/rake_task'
+# RuboCop::RakeTask.new
+#
+# Use global Rake namespace here to avoid namespace issues with custom
+# rubocop-rake tasks
+#
+# source://rubocop//lib/rubocop/rake_task.rb#14
+class RuboCop::RakeTask < ::Rake::TaskLib
+  # @return [RakeTask] a new instance of RakeTask
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#17
+  def initialize(name = T.unsafe(nil), *args, &task_block); end
+
+  # Returns the value of attribute fail_on_error.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def fail_on_error; end
+
+  # Sets the attribute fail_on_error
+  #
+  # @param value the value to set the attribute fail_on_error to.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def fail_on_error=(_arg0); end
+
+  # Returns the value of attribute formatters.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def formatters; end
+
+  # Sets the attribute formatters
+  #
+  # @param value the value to set the attribute formatters to.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def formatters=(_arg0); end
+
+  # Returns the value of attribute name.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def name; end
+
+  # Sets the attribute name
+  #
+  # @param value the value to set the attribute name to.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def name=(_arg0); end
+
+  # Returns the value of attribute options.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def options; end
+
+  # Sets the attribute options
+  #
+  # @param value the value to set the attribute options to.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def options=(_arg0); end
+
+  # Returns the value of attribute patterns.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def patterns; end
+
+  # Sets the attribute patterns
+  #
+  # @param value the value to set the attribute patterns to.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def patterns=(_arg0); end
+
+  # Returns the value of attribute requires.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def requires; end
+
+  # Sets the attribute requires
+  #
+  # @param value the value to set the attribute requires to.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def requires=(_arg0); end
+
+  # Returns the value of attribute verbose.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def verbose; end
+
+  # Sets the attribute verbose
+  #
+  # @param value the value to set the attribute verbose to.
+  #
+  # source://rubocop//lib/rubocop/rake_task.rb#15
+  def verbose=(_arg0); end
+
+  private
+
+  # source://rubocop//lib/rubocop/rake_task.rb#55
+  def full_options; end
+
+  # source://rubocop//lib/rubocop/rake_task.rb#35
+  def perform(option); end
+
+  # source://rubocop//lib/rubocop/rake_task.rb#44
+  def run_cli(verbose, options); end
+
+  # source://rubocop//lib/rubocop/rake_task.rb#62
+  def setup_ivars(name); end
+
+  # source://rubocop//lib/rubocop/rake_task.rb#72
+  def setup_subtasks(name, *args, &task_block); end
+end
+
 # Common methods and behaviors for dealing with remote config files.
 #
 # @api private
@@ -54140,18 +54257,10 @@ end
 # source://rubocop//lib/rubocop/core_ext/string.rb#4
 class String
   include ::Comparable
-
-  # Checks whether a string is blank. A string is considered blank if it
-  # is either empty or contains only whitespace characters.
-  #
-  # @example
-  #   ''.blank? #=> true
-  # @example
-  #   '    '.blank? #=> true
-  # @example
-  #   '  test'.blank? #=> false
-  # @return [Boolean] true is the string is blank, false otherwise
-  #
-  # source://rubocop//lib/rubocop/core_ext/string.rb#19
-  def blank?; end
 end
+
+# source://activesupport/7.0.4/lib/active_support/core_ext/object/blank.rb#104
+String::BLANK_RE = T.let(T.unsafe(nil), Regexp)
+
+# source://activesupport/7.0.4/lib/active_support/core_ext/object/blank.rb#105
+String::ENCODED_BLANKS = T.let(T.unsafe(nil), Concurrent::Map)

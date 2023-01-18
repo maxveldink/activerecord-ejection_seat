@@ -1,6 +1,6 @@
 # rubocop:disable Naming/FileName
 # rubocop:enable Naming/FileName
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
 require_relative "activerecord-ejection_seat/version"

@@ -1,11 +1,17 @@
+inherit_mode:
+  merge:
+    - Exclude
+
 require:
+  - rubocop-minitest
   - rubocop-rake
-  - rubocop-rspec
   - rubocop-sorbet
 
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.0
+  Exclude:
+    - sorbet/**/*.rbi
 
 Style/AccessorGrouping:
   Enabled: false
@@ -20,9 +26,3 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
-
-RSpec/FilePath:
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Max: 3

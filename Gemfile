@@ -8,8 +8,8 @@ gemspec
 group :development do
   gem "rake"
   gem "rubocop"
+  gem "rubocop-minitest"
   gem "rubocop-rake"
-  gem "rubocop-rspec"
   gem "rubocop-sorbet"
   gem "sorbet"
   gem "spoom", require: false
@@ -19,7 +19,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "rspec"
+  gem "minitest"
   gem "sorbet-runtime"
   gem "sorbet-struct-comparable"
   gem "sqlite3"
