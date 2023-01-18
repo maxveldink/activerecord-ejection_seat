@@ -1,3 +1,7 @@
+inherit:
+  merge:
+    - Exclude
+
 require:
   - rubocop-minitest
   - rubocop-rake
