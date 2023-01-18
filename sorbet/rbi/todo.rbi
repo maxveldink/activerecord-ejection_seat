@@ -3,7 +3,3 @@
 # Please instead update this file by running `bin/tapioca todo`.
 
 # typed: false
-
-module ActiveRecord::ConnectionAdapters::DatabaseStatements; end
-module ActiveRecord::ConnectionAdapters::SchemaStatements; end
-module ActiveRecord::DatabaseConfigurations::HashConfig; end

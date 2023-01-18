@@ -1,5 +1,7 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
+
+require "minitest/autorun"
 
 require "pathname"
 
@@ -13,29 +15,10 @@ require "debug"
 
 require "active_record"
 require "active_record/database_configurations"
+require "active_record/schema"
+require "active_record/migration"
 
-RSpec.configure do |config|
-  # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
-
-  # Disable RSpec exposing methods globally on `Module` and `main`
-  config.disable_monkey_patching!
-
-  config.expect_with :rspec do |c|
-    c.syntax = :expect
-  end
-
-  config.order = :random
-
-  config.filter_run focus: true
-  config.run_all_when_everything_filtered = true
-end
-
-yaml_config = if RUBY_VERSION >= "3.0.0"
-                YAML.safe_load_file(test_dir.join("support/database.yml"), aliases: true)
-              else
-                YAML.load_file(test_dir.join("support/database.yml"))
-              end
+yaml_config = YAML.safe_load(File.read(test_dir.join("support/database.yml")), aliases: true)
 config = ActiveRecord::DatabaseConfigurations::HashConfig.new("test", "sqlite3", yaml_config)
 ActiveRecord::Base.configurations.configurations << config
 
