@@ -9,9 +9,7 @@ end
 
 require "rubocop/rake_task"
 
-RuboCop::RakeTask.new do |t|
-  t.options = ["-A"]
-end
+RuboCop::RakeTask.new
 
 desc "Run tapioca compilers"
 task :tapioca do
@@ -23,4 +21,4 @@ task :sorbet do
   sh "bundle exec srb tc"
 end
 
-task default: %i[rubocop sorbet test]
+task default: %i[rubocop:autocorrect_all sorbet test]
