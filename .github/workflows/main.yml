@@ -53,7 +53,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - run: bin/rubocop
+    - run: bin/rubocop -c .rubocop.yml
   tests:
     runs-on: ubuntu-latest
     name: Tests on Ruby ${{ matrix.ruby }}
