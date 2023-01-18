@@ -6,6 +6,8 @@ require:
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.0
+  Exclude:
+    - sorbet/**/*.rbi
 
 Style/AccessorGrouping:
   Enabled: false
