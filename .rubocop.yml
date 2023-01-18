@@ -1,4 +1,4 @@
-inherit:
+inherit_mode:
   merge:
     - Exclude
 
