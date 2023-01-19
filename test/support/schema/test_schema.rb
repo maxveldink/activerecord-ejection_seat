@@ -21,4 +21,15 @@ ActiveRecord::Schema.define do
   create_table :locations, force: :cascade do |t|
     t.string :name
   end
+
+  create_table :simple_pets, force: :cascade do |t|
+    t.string :breed
+  end
+
+  create_table :complex_pets, force: :cascade do |t|
+    t.string :name
+    t.string :breed
+    t.integer :age
+    t.boolean :pedigree
+  end
 end

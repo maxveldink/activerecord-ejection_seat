@@ -1,8 +1,6 @@
 # typed: false
 # frozen_string_literal: true
 
-require "active_record"
-
 module ActiveRecord
   module EjectionSeat
     # Defines `#eject` `.buckle` methods for going between ActiveRecord models and Sorbet T::Structs.

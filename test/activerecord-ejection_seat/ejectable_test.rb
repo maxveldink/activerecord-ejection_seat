@@ -3,7 +3,7 @@
 
 require "test_helper"
 
-class TestEjectable < Minitest::Test
+class EjectableTest < Minitest::Test
   def setup
     @location_model = Location.new(name: "Florida")
     @location_struct = Types::Location.new(name: "Florida")
@@ -33,6 +33,18 @@ class TestEjectable < Minitest::Test
     assert_equal user_model.eject, @user_struct
   end
 
+  def test_eject_handles_incorrect_props_being_built
+    pet_model = SimplePet.new(breed: "Brittany")
+
+    assert_raises(TypeError) { pet_model.eject }
+  end
+
+  def test_eject_handles_incorrect_deserialization_of_enum
+    post_model = Post.new(title: "Testing 123", status: "published")
+
+    assert_raises(TypeError) { post_model.eject }
+  end
+
   def test_buckle_handles_invalid_class_passed_in
     assert_raises ArgumentError do
       Location.buckle(Types::Pet.new(name: "Java", breed: "Long-haired Cat"))
@@ -54,6 +66,7 @@ class TestEjectable < Minitest::Test
     assert_equal "draft", post_model.status
   end
 
+  # rubocop:disable Minitest/MultipleAssertions
   def test_buckle_handles_t_struct_fields
     user_model = User.buckle(@user_struct)
 
@@ -63,6 +76,7 @@ class TestEjectable < Minitest::Test
     assert_kind_of Location, user_model.location
     assert_equal "Florida", user_model.location&.name
   end
+  # rubocop:enable Minitest/MultipleAssertions
 
   def test_from_struct_is_an_alias_for_buckle
     location_model = Location.from_struct(@location_struct)
