@@ -32,6 +32,11 @@ class PropsBuilder
     attribute = model.send(prop_name)
     prop_type = target_struct.props.dig(prop_name, :type)
 
+    cast_attribute(attribute, prop_type)
+  end
+
+  sig { params(attribute: T.untyped, prop_type: Class).returns(T.untyped) }
+  def cast_attribute(attribute, prop_type)
     if prop_type < T::Enum
       prop_type.deserialize(attribute)
     elsif prop_type < T::Struct
@@ -39,6 +44,8 @@ class PropsBuilder
     else
       attribute
     end
+  rescue KeyError
+    nil
   end
 
   sig { returns(ActiveRecord::Base) }

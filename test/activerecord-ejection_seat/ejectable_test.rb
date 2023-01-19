@@ -33,6 +33,18 @@ class EjectableTest < Minitest::Test
     assert_equal user_model.eject, @user_struct
   end
 
+  def test_eject_handles_incorrect_props_being_built
+    pet_model = SimplePet.new(breed: "Brittany")
+
+    assert_raises(TypeError) { pet_model.eject }
+  end
+
+  def test_eject_handles_incorrect_deserialization_of_enum
+    post_model = Post.new(title: "Testing 123", status: "published")
+
+    assert_raises(TypeError) { post_model.eject }
+  end
+
   def test_buckle_handles_invalid_class_passed_in
     assert_raises ArgumentError do
       Location.buckle(Types::Pet.new(name: "Java", breed: "Long-haired Cat"))

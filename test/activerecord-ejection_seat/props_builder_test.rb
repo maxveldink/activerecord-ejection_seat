@@ -17,4 +17,18 @@ class PropsBuilderTest < Minitest::Test
 
     assert_equal({ name: nil, breed: "Brittany" }, builder.build)
   end
+
+  def test_when_type_needs_t_enum_and_correct_deserialization_occurs_it_builds_correctly
+    post = Post.new(title: "Testing 123", status: "draft")
+    builder = PropsBuilder.new(model: post, target_struct: Types::Post)
+
+    assert_equal({ title: "Testing 123", status: Types::PostStatus::Draft }, builder.build)
+  end
+
+  def test_when_type_needs_t_enum_and_incorrect_deserialization_occurs_it_builds_correctly
+    post = Post.new(title: "Testing 123", status: "published")
+    builder = PropsBuilder.new(model: post, target_struct: Types::Post)
+
+    assert_equal({ title: "Testing 123", status: nil }, builder.build)
+  end
 end
