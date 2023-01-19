@@ -3,7 +3,7 @@
 
 require "test_helper"
 
-class TestEjectable < Minitest::Test
+class EjectableTest < Minitest::Test
   def setup
     @location_model = Location.new(name: "Florida")
     @location_struct = Types::Location.new(name: "Florida")
@@ -54,6 +54,7 @@ class TestEjectable < Minitest::Test
     assert_equal "draft", post_model.status
   end
 
+  # rubocop:disable Minitest/MultipleAssertions
   def test_buckle_handles_t_struct_fields
     user_model = User.buckle(@user_struct)
 
@@ -63,6 +64,7 @@ class TestEjectable < Minitest::Test
     assert_kind_of Location, user_model.location
     assert_equal "Florida", user_model.location&.name
   end
+  # rubocop:enable Minitest/MultipleAssertions
 
   def test_from_struct_is_an_alias_for_buckle
     location_model = Location.from_struct(@location_struct)

@@ -17,6 +17,7 @@ require "active_record"
 require "active_record/database_configurations"
 require "active_record/schema"
 require "active_record/migration"
+require "sorbet-struct-comparable"
 
 yaml_config = YAML.safe_load(File.read(test_dir.join("support/database.yml")), aliases: true)
 config = ActiveRecord::DatabaseConfigurations::HashConfig.new("test", "sqlite3", yaml_config)

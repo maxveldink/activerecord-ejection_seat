@@ -1,8 +1,6 @@
 # typed: strict
 # frozen_string_literal: true
 
-require "sorbet-runtime"
-
 # Creates initialization payload for targeted T::Struct
 class PropsBuilder
   extend T::Sig
