@@ -20,7 +20,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-Let's say you have an `ActiveRecord` model for a `User` with a string `name` column, an integer `age` column and a `role` enum column. Another way to express this would be a `User` type that is a simple, typed struct.
+Let's say you have an `ActiveRecord` model for a `User` with a string `name` column, an integer `age` column, a `role` enum column and a belongs to association with a `Location` model. Another way to express this would be a `User` type that is a simple, typed struct with other supporting structs.
 
 ```ruby
 module Types
@@ -31,10 +31,15 @@ module Types
     end
   end
 
+  class Location < T::Struct
+    const :name, String
+  end
+
   class User < T::Struct
     const :name, String
     const :age, Integer
     const :role, UserRoles
+    const :location, Location
   end
 end
 ```
@@ -43,6 +48,7 @@ In our model, we can specify an ejection to this type.
 
 ```ruby
 class User
+  belongs_to :location
   enum :role, { admin: "admin", member: "member" }
 
   ejects_to Types::User
@@ -52,17 +58,18 @@ end
 Now, we have two new methods available on `User`. First, we can eject from a `User` instance to a `Types::User`.
 
 ```ruby
-User.new(name: "Max", age: 28, role: "admin").eject
-# => Types::User(name: "Max", age: 28, role: Types::UserRoles::Admin)
-User.new(name: "Max", age: 28, role: "admin").to_struct # alias
+location = Location.new(name: "Florida")
+User.new(name: "Max", age: 28, role: "admin", location: location).eject
+# => Types::User(name: "Max", age: 28, role: Types::UserRoles::Admin, location: Types::Location.new(name: "Florida))
+User.new(name: "Max", age: 28, role: "admin", location: location).to_struct # alias
 ```
 
 Second, we can buckle into the `User` model with a `Types::User`.
 
 ```ruby
-user_struct = Types::User.new(name: "Max", age: 28, role: Types::UserRoles::Admin)
+user_struct = Types::User.new(name: "Max", age: 28, role: Types::UserRoles::Admin, location: Types::Location.new(name: "Florida"))
 User.buckle(user_struct)
-# => User(name: "Max", age: 28, role: "admin")
+# => User(name: "Max", age: 28, role: "admin", location: Location(name: "Florida"))
 User.from_struct(user_struct) # alias
 ```
 
