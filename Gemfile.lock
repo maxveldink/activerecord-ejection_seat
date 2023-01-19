@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    activerecord-ejection_seat (0.2.0)
+    activerecord-ejection_seat (0.3.0)
       activerecord (>= 6.0)
       sorbet-runtime
 
