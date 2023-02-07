@@ -16897,7 +16897,7 @@ class Regexp
   def as_json(options = T.unsafe(nil)); end
 end
 
-# source://regexp_parser/2.6.1/lib/regexp_parser/token.rb#2
+# source://regexp_parser/2.6.2/lib/regexp_parser/token.rb#2
 Regexp::TOKEN_KEYS = T.let(T.unsafe(nil), Array)
 
 class Regexp::TimeoutError < ::RegexpError; end
