@@ -81,7 +81,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/audaciousaardvark/activerecord-ejection_seat. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/audaciousaardvark/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/maxveldink/activerecord-ejection_seat. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/maxveldink/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -89,8 +89,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in this project's codebase, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/audaciousaardvark/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in this project's codebase, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/maxveldink/activerecord-ejection_seat/blob/master/CODE_OF_CONDUCT.md).
 
 ## Sponsorships
 
-I love creating in the open. If you find this or any other Audacious Aardvark or [maxveld.ink](https://maxveld.ink) content useful, please consider sponsoring me on [GitHub](https://github.com/sponsors/AudaciousAardvark).
+I love creating in the open. If you find this or any other [maxveld.ink](https://maxveld.ink) content useful, please consider sponsoring me on [GitHub](https://github.com/sponsors/maxveldink).
