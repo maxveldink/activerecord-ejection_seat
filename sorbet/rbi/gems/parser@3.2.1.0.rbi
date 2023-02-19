@@ -868,7 +868,7 @@ end
 
 # @api public
 #
-# source://parser//lib/parser.rb#76
+# source://parser//lib/parser.rb#77
 module Parser::Builders; end
 
 # source://parser//lib/parser/builders/default.rb#8
@@ -1912,723 +1912,550 @@ Parser::Diagnostic::LEVELS = T.let(T.unsafe(nil), Array)
 class Parser::Lexer
   # @return [Lexer] a new instance of Lexer
   #
-  # source://parser//lib/parser/lexer-F1.rb#11148
+  # source://parser//lib/parser/lexer-F1.rb#8250
   def initialize(version); end
 
   # Return next token: [type, value].
   #
-  # source://parser//lib/parser/lexer-F1.rb#11323
+  # source://parser//lib/parser/lexer-F1.rb#8410
   def advance; end
 
   # Returns the value of attribute cmdarg.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def cmdarg; end
 
   # Sets the attribute cmdarg
   #
   # @param value the value to set the attribute cmdarg to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def cmdarg=(_arg0); end
 
   # Returns the value of attribute cmdarg_stack.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11146
+  # source://parser//lib/parser/lexer-F1.rb#8248
   def cmdarg_stack; end
 
   # Returns the value of attribute command_start.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def command_start; end
 
   # Sets the attribute command_start
   #
   # @param value the value to set the attribute command_start to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def command_start=(_arg0); end
 
   # Returns the value of attribute comments.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11144
+  # source://parser//lib/parser/lexer-F1.rb#8246
   def comments; end
 
   # Sets the attribute comments
   #
   # @param value the value to set the attribute comments to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11144
+  # source://parser//lib/parser/lexer-F1.rb#8246
   def comments=(_arg0); end
 
   # Returns the value of attribute cond.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def cond; end
 
   # Sets the attribute cond
   #
   # @param value the value to set the attribute cond to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def cond=(_arg0); end
 
   # Returns the value of attribute cond_stack.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11146
+  # source://parser//lib/parser/lexer-F1.rb#8248
   def cond_stack; end
 
   # Returns the value of attribute context.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def context; end
 
   # Sets the attribute context
   #
   # @param value the value to set the attribute context to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11142
+  # source://parser//lib/parser/lexer-F1.rb#8244
   def context=(_arg0); end
 
-  # source://parser//lib/parser/lexer-F1.rb#11315
+  # source://parser//lib/parser/lexer-F1.rb#8405
   def dedent_level; end
 
   # Returns the value of attribute diagnostics.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11138
+  # source://parser//lib/parser/lexer-F1.rb#8240
   def diagnostics; end
 
   # Sets the attribute diagnostics
   #
   # @param value the value to set the attribute diagnostics to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11138
+  # source://parser//lib/parser/lexer-F1.rb#8240
   def diagnostics=(_arg0); end
 
-  # source://parser//lib/parser/lexer-F1.rb#11265
+  # source://parser//lib/parser/lexer-F1.rb#8358
   def encoding; end
 
   # Returns the value of attribute force_utf32.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11140
+  # source://parser//lib/parser/lexer-F1.rb#8242
   def force_utf32; end
 
   # Sets the attribute force_utf32
   #
   # @param value the value to set the attribute force_utf32 to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11140
+  # source://parser//lib/parser/lexer-F1.rb#8242
   def force_utf32=(_arg0); end
 
   # Returns the value of attribute lambda_stack.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11146
+  # source://parser//lib/parser/lexer-F1.rb#8248
   def lambda_stack; end
 
   # Returns the value of attribute paren_nest.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11146
+  # source://parser//lib/parser/lexer-F1.rb#8248
   def paren_nest; end
 
-  # source://parser//lib/parser/lexer-F1.rb#11302
+  # source://parser//lib/parser/lexer-F1.rb#8392
   def pop_cmdarg; end
 
-  # source://parser//lib/parser/lexer-F1.rb#11311
+  # source://parser//lib/parser/lexer-F1.rb#8401
   def pop_cond; end
 
-  # source://parser//lib/parser/lexer-F1.rb#11297
+  # source://parser//lib/parser/lexer-F1.rb#8387
   def push_cmdarg; end
 
-  # source://parser//lib/parser/lexer-F1.rb#11306
+  # source://parser//lib/parser/lexer-F1.rb#8396
   def push_cond; end
 
-  # source://parser//lib/parser/lexer-F1.rb#11179
+  # source://parser//lib/parser/lexer-F1.rb#8281
   def reset(reset_state = T.unsafe(nil)); end
 
-  # Returns the value of attribute source_buffer.
+  # %
   #
-  # source://parser//lib/parser/lexer-F1.rb#11136
+  # source://parser//lib/parser/lexer-F1.rb#8238
   def source_buffer; end
 
-  # source://parser//lib/parser/lexer-F1.rb#11244
+  # source://parser//lib/parser/lexer-F1.rb#8334
   def source_buffer=(source_buffer); end
 
-  # source://parser//lib/parser/lexer-F1.rb#11289
+  # source://parser//lib/parser/lexer-F1.rb#8379
   def state; end
 
-  # source://parser//lib/parser/lexer-F1.rb#11293
+  # source://parser//lib/parser/lexer-F1.rb#8383
   def state=(state); end
 
   # Returns the value of attribute static_env.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11139
+  # source://parser//lib/parser/lexer-F1.rb#8241
   def static_env; end
 
   # Sets the attribute static_env
   #
   # @param value the value to set the attribute static_env to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11139
+  # source://parser//lib/parser/lexer-F1.rb#8241
   def static_env=(_arg0); end
 
   # Returns the value of attribute tokens.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11144
+  # source://parser//lib/parser/lexer-F1.rb#8246
   def tokens; end
 
   # Sets the attribute tokens
   #
   # @param value the value to set the attribute tokens to.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11144
+  # source://parser//lib/parser/lexer-F1.rb#8246
   def tokens=(_arg0); end
 
   # Returns the value of attribute version.
   #
-  # source://parser//lib/parser/lexer-F1.rb#11146
+  # source://parser//lib/parser/lexer-F1.rb#8248
   def version; end
 
   protected
 
-  # source://parser//lib/parser/lexer-F1.rb#20732
+  # source://parser//lib/parser/lexer-F1.rb#14631
   def arg_or_cmdarg(cmd_state); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21096
+  # source://parser//lib/parser/lexer-F1.rb#14693
   def check_ambiguous_slash(tm); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21144
-  def check_invalid_escapes(p); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20756
+  # source://parser//lib/parser/lexer-F1.rb#14655
   def diagnostic(type, reason, arguments = T.unsafe(nil), location = T.unsafe(nil), highlights = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21047
-  def e_heredoc_nl(p); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20901
+  # source://parser//lib/parser/lexer-F1.rb#14661
   def e_lbrace; end
 
-  # source://parser//lib/parser/lexer-F1.rb#20706
+  # source://parser//lib/parser/lexer-F1.rb#14605
   def emit(type, value = T.unsafe(nil), s = T.unsafe(nil), e = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21086
-  def emit_character_constant; end
+  # source://parser//lib/parser/lexer-F1.rb#14714
+  def emit_class_var(ts = T.unsafe(nil), te = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21129
+  # source://parser//lib/parser/lexer-F1.rb#14742
   def emit_colon_with_digits(p, tm, diag_msg); end
 
-  # source://parser//lib/parser/lexer-F1.rb#20740
+  # source://parser//lib/parser/lexer-F1.rb#14639
   def emit_comment(s = T.unsafe(nil), e = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#20752
+  # source://parser//lib/parser/lexer-F1.rb#14651
   def emit_comment_from_range(p, pe); end
 
-  # source://parser//lib/parser/lexer-F1.rb#20722
+  # source://parser//lib/parser/lexer-F1.rb#14621
   def emit_do(do_block = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21107
-  def emit_global_var; end
+  # source://parser//lib/parser/lexer-F1.rb#14704
+  def emit_global_var(ts = T.unsafe(nil), te = T.unsafe(nil)); end
 
-  # @return [Boolean]
-  #
-  # source://parser//lib/parser/lexer-F1.rb#20816
-  def emit_invalid_escapes?; end
+  # source://parser//lib/parser/lexer-F1.rb#14722
+  def emit_instance_var(ts = T.unsafe(nil), te = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21117
+  # source://parser//lib/parser/lexer-F1.rb#14730
   def emit_rbrace_rparen_rbrack; end
 
-  # source://parser//lib/parser/lexer-F1.rb#21139
+  # source://parser//lib/parser/lexer-F1.rb#14752
   def emit_singleton_class; end
 
-  # source://parser//lib/parser/lexer-F1.rb#20716
+  # source://parser//lib/parser/lexer-F1.rb#14615
   def emit_table(table, s = T.unsafe(nil), e = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#20694
-  def encode_escape(ord); end
-
-  # source://parser//lib/parser/lexer-F1.rb#21074
-  def encode_escaped_char(p); end
-
-  # @return [Boolean]
-  #
-  # source://parser//lib/parser/lexer-F1.rb#20681
-  def eof_codepoint?(point); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20886
-  def extend_interp_code(current_literal); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20910
-  def extend_interp_digit_var; end
-
-  # source://parser//lib/parser/lexer-F1.rb#21065
-  def extend_interp_var(current_literal); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20919
-  def extend_string_eol_check_eof(current_literal, pe); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20936
-  def extend_string_eol_heredoc_intertwined(p); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20926
-  def extend_string_eol_heredoc_line; end
-
-  # source://parser//lib/parser/lexer-F1.rb#20952
-  def extend_string_eol_words(current_literal, p); end
-
-  # String escaping
-  #
-  # source://parser//lib/parser/lexer-F1.rb#20830
-  def extend_string_escaped; end
-
-  # source://parser//lib/parser/lexer-F1.rb#20972
-  def extend_string_for_token_range(current_literal, string); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20964
-  def extend_string_slice_end(lookahead); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20799
-  def literal; end
-
-  # source://parser//lib/parser/lexer-F1.rb#20771
-  def next_state_for_literal(literal); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20988
+  # source://parser//lib/parser/lexer-F1.rb#14670
   def numeric_literal_int; end
 
-  # source://parser//lib/parser/lexer-F1.rb#20803
-  def pop_literal; end
+  # source://parser//lib/parser/lexer-F1.rb#14689
+  def on_newline(p); end
 
-  # === LITERAL STACK ===
-  #
-  # source://parser//lib/parser/lexer-F1.rb#20765
-  def push_literal(*args); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20702
+  # source://parser//lib/parser/lexer-F1.rb#14601
   def range(s = T.unsafe(nil), e = T.unsafe(nil)); end
 
-  # source://parser//lib/parser/lexer-F1.rb#21057
-  def read_post_meta_or_ctrl_char(p); end
-
-  # source://parser//lib/parser/lexer-F1.rb#21078
-  def slash_c_char; end
-
-  # source://parser//lib/parser/lexer-F1.rb#21082
-  def slash_m_char; end
-
-  # source://parser//lib/parser/lexer-F1.rb#20689
+  # source://parser//lib/parser/lexer-F1.rb#14592
   def stack_pop; end
 
-  # source://parser//lib/parser/lexer-F1.rb#20698
+  # source://parser//lib/parser/lexer-F1.rb#14597
   def tok(s = T.unsafe(nil), e = T.unsafe(nil)); end
-
-  # source://parser//lib/parser/lexer-F1.rb#20976
-  def unescape_char(p); end
-
-  # source://parser//lib/parser/lexer-F1.rb#21007
-  def unicode_points(p); end
 
   # @return [Boolean]
   #
-  # source://parser//lib/parser/lexer-F1.rb#20685
+  # source://parser//lib/parser/lexer-F1.rb#14588
   def version?(*versions); end
 
   class << self
     # Returns the value of attribute lex_en_expr_arg.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11080
+    # source://parser//lib/parser/lexer-F1.rb#8186
     def lex_en_expr_arg; end
 
     # Sets the attribute lex_en_expr_arg
     #
     # @param value the value to set the attribute lex_en_expr_arg to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11080
+    # source://parser//lib/parser/lexer-F1.rb#8186
     def lex_en_expr_arg=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_beg.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11096
+    # source://parser//lib/parser/lexer-F1.rb#8202
     def lex_en_expr_beg; end
 
     # Sets the attribute lex_en_expr_beg
     #
     # @param value the value to set the attribute lex_en_expr_beg to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11096
+    # source://parser//lib/parser/lexer-F1.rb#8202
     def lex_en_expr_beg=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_cmdarg.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11084
+    # source://parser//lib/parser/lexer-F1.rb#8190
     def lex_en_expr_cmdarg; end
 
     # Sets the attribute lex_en_expr_cmdarg
     #
     # @param value the value to set the attribute lex_en_expr_cmdarg to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11084
+    # source://parser//lib/parser/lexer-F1.rb#8190
     def lex_en_expr_cmdarg=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_dot.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11076
+    # source://parser//lib/parser/lexer-F1.rb#8182
     def lex_en_expr_dot; end
 
     # Sets the attribute lex_en_expr_dot
     #
     # @param value the value to set the attribute lex_en_expr_dot to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11076
+    # source://parser//lib/parser/lexer-F1.rb#8182
     def lex_en_expr_dot=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_end.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11108
+    # source://parser//lib/parser/lexer-F1.rb#8214
     def lex_en_expr_end; end
 
     # Sets the attribute lex_en_expr_end
     #
     # @param value the value to set the attribute lex_en_expr_end to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11108
+    # source://parser//lib/parser/lexer-F1.rb#8214
     def lex_en_expr_end=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_endarg.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11088
+    # source://parser//lib/parser/lexer-F1.rb#8194
     def lex_en_expr_endarg; end
 
     # Sets the attribute lex_en_expr_endarg
     #
     # @param value the value to set the attribute lex_en_expr_endarg to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11088
+    # source://parser//lib/parser/lexer-F1.rb#8194
     def lex_en_expr_endarg=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_endfn.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11072
+    # source://parser//lib/parser/lexer-F1.rb#8178
     def lex_en_expr_endfn; end
 
     # Sets the attribute lex_en_expr_endfn
     #
     # @param value the value to set the attribute lex_en_expr_endfn to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11072
+    # source://parser//lib/parser/lexer-F1.rb#8178
     def lex_en_expr_endfn=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_fname.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11068
+    # source://parser//lib/parser/lexer-F1.rb#8174
     def lex_en_expr_fname; end
 
     # Sets the attribute lex_en_expr_fname
     #
     # @param value the value to set the attribute lex_en_expr_fname to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11068
+    # source://parser//lib/parser/lexer-F1.rb#8174
     def lex_en_expr_fname=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_labelarg.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11100
+    # source://parser//lib/parser/lexer-F1.rb#8206
     def lex_en_expr_labelarg; end
 
     # Sets the attribute lex_en_expr_labelarg
     #
     # @param value the value to set the attribute lex_en_expr_labelarg to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11100
+    # source://parser//lib/parser/lexer-F1.rb#8206
     def lex_en_expr_labelarg=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_mid.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11092
+    # source://parser//lib/parser/lexer-F1.rb#8198
     def lex_en_expr_mid; end
 
     # Sets the attribute lex_en_expr_mid
     #
     # @param value the value to set the attribute lex_en_expr_mid to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11092
+    # source://parser//lib/parser/lexer-F1.rb#8198
     def lex_en_expr_mid=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_value.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11104
+    # source://parser//lib/parser/lexer-F1.rb#8210
     def lex_en_expr_value; end
 
     # Sets the attribute lex_en_expr_value
     #
     # @param value the value to set the attribute lex_en_expr_value to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11104
+    # source://parser//lib/parser/lexer-F1.rb#8210
     def lex_en_expr_value=(_arg0); end
 
     # Returns the value of attribute lex_en_expr_variable.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11064
+    # source://parser//lib/parser/lexer-F1.rb#8170
     def lex_en_expr_variable; end
 
     # Sets the attribute lex_en_expr_variable
     #
     # @param value the value to set the attribute lex_en_expr_variable to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11064
+    # source://parser//lib/parser/lexer-F1.rb#8170
     def lex_en_expr_variable=(_arg0); end
 
-    # Returns the value of attribute lex_en_interp_backslash_delimited.
+    # Returns the value of attribute lex_en_inside_string.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11044
-    def lex_en_interp_backslash_delimited; end
+    # source://parser//lib/parser/lexer-F1.rb#8230
+    def lex_en_inside_string; end
 
-    # Sets the attribute lex_en_interp_backslash_delimited
+    # Sets the attribute lex_en_inside_string
     #
-    # @param value the value to set the attribute lex_en_interp_backslash_delimited to.
+    # @param value the value to set the attribute lex_en_inside_string to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11044
-    def lex_en_interp_backslash_delimited=(_arg0); end
-
-    # Returns the value of attribute lex_en_interp_backslash_delimited_words.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11052
-    def lex_en_interp_backslash_delimited_words; end
-
-    # Sets the attribute lex_en_interp_backslash_delimited_words
-    #
-    # @param value the value to set the attribute lex_en_interp_backslash_delimited_words to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11052
-    def lex_en_interp_backslash_delimited_words=(_arg0); end
-
-    # Returns the value of attribute lex_en_interp_string.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11032
-    def lex_en_interp_string; end
-
-    # Sets the attribute lex_en_interp_string
-    #
-    # @param value the value to set the attribute lex_en_interp_string to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11032
-    def lex_en_interp_string=(_arg0); end
-
-    # Returns the value of attribute lex_en_interp_words.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11028
-    def lex_en_interp_words; end
-
-    # Sets the attribute lex_en_interp_words
-    #
-    # @param value the value to set the attribute lex_en_interp_words to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11028
-    def lex_en_interp_words=(_arg0); end
+    # source://parser//lib/parser/lexer-F1.rb#8230
+    def lex_en_inside_string=(_arg0); end
 
     # Returns the value of attribute lex_en_leading_dot.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11112
+    # source://parser//lib/parser/lexer-F1.rb#8218
     def lex_en_leading_dot; end
 
     # Sets the attribute lex_en_leading_dot
     #
     # @param value the value to set the attribute lex_en_leading_dot to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11112
+    # source://parser//lib/parser/lexer-F1.rb#8218
     def lex_en_leading_dot=(_arg0); end
 
     # Returns the value of attribute lex_en_line_begin.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11120
+    # source://parser//lib/parser/lexer-F1.rb#8226
     def lex_en_line_begin; end
 
     # Sets the attribute lex_en_line_begin
     #
     # @param value the value to set the attribute lex_en_line_begin to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11120
+    # source://parser//lib/parser/lexer-F1.rb#8226
     def lex_en_line_begin=(_arg0); end
 
     # Returns the value of attribute lex_en_line_comment.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11116
+    # source://parser//lib/parser/lexer-F1.rb#8222
     def lex_en_line_comment; end
 
     # Sets the attribute lex_en_line_comment
     #
     # @param value the value to set the attribute lex_en_line_comment to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11116
+    # source://parser//lib/parser/lexer-F1.rb#8222
     def lex_en_line_comment=(_arg0); end
-
-    # Returns the value of attribute lex_en_plain_backslash_delimited.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11048
-    def lex_en_plain_backslash_delimited; end
-
-    # Sets the attribute lex_en_plain_backslash_delimited
-    #
-    # @param value the value to set the attribute lex_en_plain_backslash_delimited to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11048
-    def lex_en_plain_backslash_delimited=(_arg0); end
-
-    # Returns the value of attribute lex_en_plain_backslash_delimited_words.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11056
-    def lex_en_plain_backslash_delimited_words; end
-
-    # Sets the attribute lex_en_plain_backslash_delimited_words
-    #
-    # @param value the value to set the attribute lex_en_plain_backslash_delimited_words to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11056
-    def lex_en_plain_backslash_delimited_words=(_arg0); end
-
-    # Returns the value of attribute lex_en_plain_string.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11040
-    def lex_en_plain_string; end
-
-    # Sets the attribute lex_en_plain_string
-    #
-    # @param value the value to set the attribute lex_en_plain_string to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11040
-    def lex_en_plain_string=(_arg0); end
-
-    # Returns the value of attribute lex_en_plain_words.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11036
-    def lex_en_plain_words; end
-
-    # Sets the attribute lex_en_plain_words
-    #
-    # @param value the value to set the attribute lex_en_plain_words to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11036
-    def lex_en_plain_words=(_arg0); end
-
-    # Returns the value of attribute lex_en_regexp_modifiers.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11060
-    def lex_en_regexp_modifiers; end
-
-    # Sets the attribute lex_en_regexp_modifiers
-    #
-    # @param value the value to set the attribute lex_en_regexp_modifiers to.
-    #
-    # source://parser//lib/parser/lexer-F1.rb#11060
-    def lex_en_regexp_modifiers=(_arg0); end
 
     # Returns the value of attribute lex_error.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11023
+    # source://parser//lib/parser/lexer-F1.rb#8165
     def lex_error; end
 
     # Sets the attribute lex_error
     #
     # @param value the value to set the attribute lex_error to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11023
+    # source://parser//lib/parser/lexer-F1.rb#8165
     def lex_error=(_arg0); end
 
     # Returns the value of attribute lex_start.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11019
+    # source://parser//lib/parser/lexer-F1.rb#8161
     def lex_start; end
 
     # Sets the attribute lex_start
     #
     # @param value the value to set the attribute lex_start to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#11019
+    # source://parser//lib/parser/lexer-F1.rb#8161
     def lex_start=(_arg0); end
 
     private
 
     # Returns the value of attribute _lex_eof_trans.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10886
+    # source://parser//lib/parser/lexer-F1.rb#8064
     def _lex_eof_trans; end
 
     # Sets the attribute _lex_eof_trans
     #
     # @param value the value to set the attribute _lex_eof_trans to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10886
+    # source://parser//lib/parser/lexer-F1.rb#8064
     def _lex_eof_trans=(_arg0); end
 
     # Returns the value of attribute _lex_from_state_actions.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10753
+    # source://parser//lib/parser/lexer-F1.rb#7967
     def _lex_from_state_actions; end
 
     # Sets the attribute _lex_from_state_actions
     #
     # @param value the value to set the attribute _lex_from_state_actions to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10753
+    # source://parser//lib/parser/lexer-F1.rb#7967
     def _lex_from_state_actions=(_arg0); end
 
     # Returns the value of attribute _lex_index_offsets.
     #
-    # source://parser//lib/parser/lexer-F1.rb#604
+    # source://parser//lib/parser/lexer-F1.rb#461
     def _lex_index_offsets; end
 
     # Sets the attribute _lex_index_offsets
     #
     # @param value the value to set the attribute _lex_index_offsets to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#604
+    # source://parser//lib/parser/lexer-F1.rb#461
     def _lex_index_offsets=(_arg0); end
 
     # Returns the value of attribute _lex_indicies.
     #
-    # source://parser//lib/parser/lexer-F1.rb#737
+    # source://parser//lib/parser/lexer-F1.rb#558
     def _lex_indicies; end
 
     # Sets the attribute _lex_indicies
     #
     # @param value the value to set the attribute _lex_indicies to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#737
+    # source://parser//lib/parser/lexer-F1.rb#558
     def _lex_indicies=(_arg0); end
 
     # Returns the value of attribute _lex_key_spans.
     #
-    # source://parser//lib/parser/lexer-F1.rb#471
+    # source://parser//lib/parser/lexer-F1.rb#364
     def _lex_key_spans; end
 
     # Sets the attribute _lex_key_spans
     #
     # @param value the value to set the attribute _lex_key_spans to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#471
+    # source://parser//lib/parser/lexer-F1.rb#364
     def _lex_key_spans=(_arg0); end
 
     # Returns the value of attribute _lex_to_state_actions.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10620
+    # source://parser//lib/parser/lexer-F1.rb#7870
     def _lex_to_state_actions; end
 
     # Sets the attribute _lex_to_state_actions
     #
     # @param value the value to set the attribute _lex_to_state_actions to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10620
+    # source://parser//lib/parser/lexer-F1.rb#7870
     def _lex_to_state_actions=(_arg0); end
 
     # Returns the value of attribute _lex_trans_actions.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10420
+    # source://parser//lib/parser/lexer-F1.rb#7722
     def _lex_trans_actions; end
 
     # Sets the attribute _lex_trans_actions
     #
     # @param value the value to set the attribute _lex_trans_actions to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10420
+    # source://parser//lib/parser/lexer-F1.rb#7722
     def _lex_trans_actions=(_arg0); end
 
     # Returns the value of attribute _lex_trans_keys.
@@ -2645,14 +2472,14 @@ class Parser::Lexer
 
     # Returns the value of attribute _lex_trans_targs.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10220
+    # source://parser//lib/parser/lexer-F1.rb#7574
     def _lex_trans_targs; end
 
     # Sets the attribute _lex_trans_targs
     #
     # @param value the value to set the attribute _lex_trans_targs to.
     #
-    # source://parser//lib/parser/lexer-F1.rb#10220
+    # source://parser//lib/parser/lexer-F1.rb#7574
     def _lex_trans_targs=(_arg0); end
   end
 end
@@ -2672,21 +2499,16 @@ end
 # source://parser//lib/parser/lexer/dedenter.rb#7
 Parser::Lexer::Dedenter::TAB_WIDTH = T.let(T.unsafe(nil), Integer)
 
-# %
-#
-# source://parser//lib/parser/lexer-F1.rb#11128
-Parser::Lexer::ESCAPES = T.let(T.unsafe(nil), Hash)
-
-# source://parser//lib/parser/lexer-F1.rb#21192
+# source://parser//lib/parser/lexer-F1.rb#14799
 Parser::Lexer::ESCAPE_WHITESPACE = T.let(T.unsafe(nil), Hash)
 
-# source://parser//lib/parser/lexer-F1.rb#21178
+# source://parser//lib/parser/lexer-F1.rb#14785
 Parser::Lexer::KEYWORDS = T.let(T.unsafe(nil), Hash)
 
-# source://parser//lib/parser/lexer-F1.rb#21185
+# source://parser//lib/parser/lexer-F1.rb#14792
 Parser::Lexer::KEYWORDS_BEGIN = T.let(T.unsafe(nil), Hash)
 
-# source://parser//lib/parser/lexer-F1.rb#11269
+# source://parser//lib/parser/lexer-F1.rb#8362
 Parser::Lexer::LEX_STATES = T.let(T.unsafe(nil), Hash)
 
 # source://parser//lib/parser/lexer/literal.rb#6
@@ -2789,14 +2611,11 @@ Parser::Lexer::Literal::TYPES = T.let(T.unsafe(nil), Hash)
 
 # Mapping of strings to parser tokens.
 #
-# source://parser//lib/parser/lexer-F1.rb#21152
+# source://parser//lib/parser/lexer-F1.rb#14759
 Parser::Lexer::PUNCTUATION = T.let(T.unsafe(nil), Hash)
 
-# source://parser//lib/parser/lexer-F1.rb#21172
+# source://parser//lib/parser/lexer-F1.rb#14779
 Parser::Lexer::PUNCTUATION_BEGIN = T.let(T.unsafe(nil), Hash)
-
-# source://parser//lib/parser/lexer-F1.rb#11134
-Parser::Lexer::REGEXP_META_CHARACTERS = T.let(T.unsafe(nil), Regexp)
 
 # source://parser//lib/parser/lexer/stack_state.rb#5
 class Parser::Lexer::StackState
@@ -2827,6 +2646,476 @@ class Parser::Lexer::StackState
   # source://parser//lib/parser/lexer/stack_state.rb#42
   def to_s; end
 end
+
+# line 3 "lib/parser/lexer-strings.rl"
+#
+# source://parser//lib/parser/lexer-strings.rb#6
+class Parser::LexerStrings
+  # @return [LexerStrings] a new instance of LexerStrings
+  #
+  # source://parser//lib/parser/lexer-strings.rb#3300
+  def initialize(lexer, version); end
+
+  # source://parser//lib/parser/lexer-strings.rb#3339
+  def advance(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5069
+  def close_interp_on_current_literal(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5043
+  def continue_lexing(current_literal); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5092
+  def dedent_level; end
+
+  # Returns the value of attribute herebody_s.
+  #
+  # source://parser//lib/parser/lexer-strings.rb#3295
+  def herebody_s; end
+
+  # Sets the attribute herebody_s
+  #
+  # @param value the value to set the attribute herebody_s to.
+  #
+  # source://parser//lib/parser/lexer-strings.rb#3295
+  def herebody_s=(_arg0); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5047
+  def literal; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5015
+  def next_state_for_literal(literal); end
+
+  # This hook is triggered by "main" lexer on every newline character
+  #
+  # source://parser//lib/parser/lexer-strings.rb#5100
+  def on_newline(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5051
+  def pop_literal; end
+
+  # === LITERAL STACK ===
+  #
+  # source://parser//lib/parser/lexer-strings.rb#5009
+  def push_literal(*args); end
+
+  # source://parser//lib/parser/lexer-strings.rb#4999
+  def read_character_constant(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#3314
+  def reset; end
+
+  # Set by "main" lexer
+  #
+  # source://parser//lib/parser/lexer-strings.rb#3298
+  def source_buffer; end
+
+  # Set by "main" lexer
+  #
+  # source://parser//lib/parser/lexer-strings.rb#3298
+  def source_buffer=(_arg0); end
+
+  # Set by "main" lexer
+  #
+  # source://parser//lib/parser/lexer-strings.rb#3298
+  def source_pts; end
+
+  # Set by "main" lexer
+  #
+  # source://parser//lib/parser/lexer-strings.rb#3298
+  def source_pts=(_arg0); end
+
+  protected
+
+  # source://parser//lib/parser/lexer-strings.rb#5397
+  def check_ambiguous_slash(tm); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5408
+  def check_invalid_escapes(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5136
+  def cond; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5132
+  def diagnostic(type, reason, arguments = T.unsafe(nil), location = T.unsafe(nil), highlights = T.unsafe(nil)); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5128
+  def emit(type, value = T.unsafe(nil), s = T.unsafe(nil), e = T.unsafe(nil)); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5387
+  def emit_character_constant; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5364
+  def emit_interp_var(interp_var_kind); end
+
+  # @return [Boolean]
+  #
+  # source://parser//lib/parser/lexer-strings.rb#5140
+  def emit_invalid_escapes?; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5291
+  def encode_escape(ord); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5375
+  def encode_escaped_char(p); end
+
+  # @return [Boolean]
+  #
+  # source://parser//lib/parser/lexer-strings.rb#5112
+  def eof_codepoint?(point); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5210
+  def extend_interp_code(current_literal); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5225
+  def extend_interp_digit_var; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5355
+  def extend_interp_var(current_literal); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5234
+  def extend_string_eol_check_eof(current_literal, pe); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5251
+  def extend_string_eol_heredoc_intertwined(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5241
+  def extend_string_eol_heredoc_line; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5267
+  def extend_string_eol_words(current_literal, p); end
+
+  # String escaping
+  #
+  # source://parser//lib/parser/lexer-strings.rb#5154
+  def extend_string_escaped; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5287
+  def extend_string_for_token_range(current_literal, string); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5279
+  def extend_string_slice_end(lookahead); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5124
+  def range(s = T.unsafe(nil), e = T.unsafe(nil)); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5347
+  def read_post_meta_or_ctrl_char(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5379
+  def slash_c_char; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5383
+  def slash_m_char; end
+
+  # source://parser//lib/parser/lexer-strings.rb#5120
+  def tok(s = T.unsafe(nil), e = T.unsafe(nil)); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5295
+  def unescape_char(p); end
+
+  # source://parser//lib/parser/lexer-strings.rb#5307
+  def unicode_points(p); end
+
+  # @return [Boolean]
+  #
+  # source://parser//lib/parser/lexer-strings.rb#5116
+  def version?(*versions); end
+
+  class << self
+    # Returns the value of attribute lex_en_character.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3275
+    def lex_en_character; end
+
+    # Sets the attribute lex_en_character
+    #
+    # @param value the value to set the attribute lex_en_character to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3275
+    def lex_en_character=(_arg0); end
+
+    # Returns the value of attribute lex_en_interp_backslash_delimited.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3255
+    def lex_en_interp_backslash_delimited; end
+
+    # Sets the attribute lex_en_interp_backslash_delimited
+    #
+    # @param value the value to set the attribute lex_en_interp_backslash_delimited to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3255
+    def lex_en_interp_backslash_delimited=(_arg0); end
+
+    # Returns the value of attribute lex_en_interp_backslash_delimited_words.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3263
+    def lex_en_interp_backslash_delimited_words; end
+
+    # Sets the attribute lex_en_interp_backslash_delimited_words
+    #
+    # @param value the value to set the attribute lex_en_interp_backslash_delimited_words to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3263
+    def lex_en_interp_backslash_delimited_words=(_arg0); end
+
+    # Returns the value of attribute lex_en_interp_string.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3243
+    def lex_en_interp_string; end
+
+    # Sets the attribute lex_en_interp_string
+    #
+    # @param value the value to set the attribute lex_en_interp_string to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3243
+    def lex_en_interp_string=(_arg0); end
+
+    # Returns the value of attribute lex_en_interp_words.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3239
+    def lex_en_interp_words; end
+
+    # Sets the attribute lex_en_interp_words
+    #
+    # @param value the value to set the attribute lex_en_interp_words to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3239
+    def lex_en_interp_words=(_arg0); end
+
+    # Returns the value of attribute lex_en_plain_backslash_delimited.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3259
+    def lex_en_plain_backslash_delimited; end
+
+    # Sets the attribute lex_en_plain_backslash_delimited
+    #
+    # @param value the value to set the attribute lex_en_plain_backslash_delimited to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3259
+    def lex_en_plain_backslash_delimited=(_arg0); end
+
+    # Returns the value of attribute lex_en_plain_backslash_delimited_words.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3267
+    def lex_en_plain_backslash_delimited_words; end
+
+    # Sets the attribute lex_en_plain_backslash_delimited_words
+    #
+    # @param value the value to set the attribute lex_en_plain_backslash_delimited_words to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3267
+    def lex_en_plain_backslash_delimited_words=(_arg0); end
+
+    # Returns the value of attribute lex_en_plain_string.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3251
+    def lex_en_plain_string; end
+
+    # Sets the attribute lex_en_plain_string
+    #
+    # @param value the value to set the attribute lex_en_plain_string to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3251
+    def lex_en_plain_string=(_arg0); end
+
+    # Returns the value of attribute lex_en_plain_words.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3247
+    def lex_en_plain_words; end
+
+    # Sets the attribute lex_en_plain_words
+    #
+    # @param value the value to set the attribute lex_en_plain_words to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3247
+    def lex_en_plain_words=(_arg0); end
+
+    # Returns the value of attribute lex_en_regexp_modifiers.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3271
+    def lex_en_regexp_modifiers; end
+
+    # Sets the attribute lex_en_regexp_modifiers
+    #
+    # @param value the value to set the attribute lex_en_regexp_modifiers to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3271
+    def lex_en_regexp_modifiers=(_arg0); end
+
+    # Returns the value of attribute lex_en_unknown.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3279
+    def lex_en_unknown; end
+
+    # Sets the attribute lex_en_unknown
+    #
+    # @param value the value to set the attribute lex_en_unknown to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3279
+    def lex_en_unknown=(_arg0); end
+
+    # Returns the value of attribute lex_error.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3234
+    def lex_error; end
+
+    # Sets the attribute lex_error
+    #
+    # @param value the value to set the attribute lex_error to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3234
+    def lex_error=(_arg0); end
+
+    # Returns the value of attribute lex_start.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3230
+    def lex_start; end
+
+    # Sets the attribute lex_start
+    #
+    # @param value the value to set the attribute lex_start to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3230
+    def lex_start=(_arg0); end
+
+    private
+
+    # Returns the value of attribute _lex_actions.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#11
+    def _lex_actions; end
+
+    # Sets the attribute _lex_actions
+    #
+    # @param value the value to set the attribute _lex_actions to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#11
+    def _lex_actions=(_arg0); end
+
+    # Returns the value of attribute _lex_eof_trans.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3184
+    def _lex_eof_trans; end
+
+    # Sets the attribute _lex_eof_trans
+    #
+    # @param value the value to set the attribute _lex_eof_trans to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3184
+    def _lex_eof_trans=(_arg0); end
+
+    # Returns the value of attribute _lex_from_state_actions.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3138
+    def _lex_from_state_actions; end
+
+    # Sets the attribute _lex_from_state_actions
+    #
+    # @param value the value to set the attribute _lex_from_state_actions to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3138
+    def _lex_from_state_actions=(_arg0); end
+
+    # Returns the value of attribute _lex_index_offsets.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#244
+    def _lex_index_offsets; end
+
+    # Sets the attribute _lex_index_offsets
+    #
+    # @param value the value to set the attribute _lex_index_offsets to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#244
+    def _lex_index_offsets=(_arg0); end
+
+    # Returns the value of attribute _lex_indicies.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#290
+    def _lex_indicies; end
+
+    # Sets the attribute _lex_indicies
+    #
+    # @param value the value to set the attribute _lex_indicies to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#290
+    def _lex_indicies=(_arg0); end
+
+    # Returns the value of attribute _lex_key_spans.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#198
+    def _lex_key_spans; end
+
+    # Sets the attribute _lex_key_spans
+    #
+    # @param value the value to set the attribute _lex_key_spans to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#198
+    def _lex_key_spans=(_arg0); end
+
+    # Returns the value of attribute _lex_to_state_actions.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3092
+    def _lex_to_state_actions; end
+
+    # Sets the attribute _lex_to_state_actions
+    #
+    # @param value the value to set the attribute _lex_to_state_actions to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3092
+    def _lex_to_state_actions=(_arg0); end
+
+    # Returns the value of attribute _lex_trans_actions.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3029
+    def _lex_trans_actions; end
+
+    # Sets the attribute _lex_trans_actions
+    #
+    # @param value the value to set the attribute _lex_trans_actions to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#3029
+    def _lex_trans_actions=(_arg0); end
+
+    # Returns the value of attribute _lex_trans_keys.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#76
+    def _lex_trans_keys; end
+
+    # Sets the attribute _lex_trans_keys
+    #
+    # @param value the value to set the attribute _lex_trans_keys to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#76
+    def _lex_trans_keys=(_arg0); end
+
+    # Returns the value of attribute _lex_trans_targs.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#2966
+    def _lex_trans_targs; end
+
+    # Sets the attribute _lex_trans_targs
+    #
+    # @param value the value to set the attribute _lex_trans_targs to.
+    #
+    # source://parser//lib/parser/lexer-strings.rb#2966
+    def _lex_trans_targs=(_arg0); end
+  end
+end
+
+# %
+#
+# source://parser//lib/parser/lexer-strings.rb#3287
+Parser::LexerStrings::ESCAPES = T.let(T.unsafe(nil), Hash)
+
+# source://parser//lib/parser/lexer-strings.rb#5414
+Parser::LexerStrings::ESCAPE_WHITESPACE = T.let(T.unsafe(nil), Hash)
+
+# source://parser//lib/parser/lexer-strings.rb#3332
+Parser::LexerStrings::LEX_STATES = T.let(T.unsafe(nil), Hash)
+
+# source://parser//lib/parser/lexer-strings.rb#3293
+Parser::LexerStrings::REGEXP_META_CHARACTERS = T.let(T.unsafe(nil), Regexp)
 
 # Diagnostic messages (errors, warnings and notices) that can be generated.
 #
