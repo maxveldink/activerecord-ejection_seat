@@ -36,12 +36,6 @@ module RuboCop::Cop::ArgumentRangeHelper
   def first_argument_range(node); end
 end
 
-# source://rubocop/1.44.1/lib/rubocop/cop/mixin/allowed_methods.rb#38
-RuboCop::Cop::IgnoredMethods = RuboCop::Cop::AllowedMethods
-
-# source://rubocop/1.44.1/lib/rubocop/cop/mixin/allowed_pattern.rb#54
-RuboCop::Cop::IgnoredPattern = RuboCop::Cop::AllowedPattern
-
 # Common functionality for `AssertInDelta` and `RefuteInDelta` cops.
 #
 # @api private
@@ -92,7 +86,7 @@ class RuboCop::Cop::Minitest::AssertEmpty < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
   # source://rubocop-minitest//lib/rubocop/cop/minitest/assert_empty.rb#23
@@ -100,26 +94,26 @@ class RuboCop::Cop::Minitest::AssertEmpty < ::RuboCop::Cop::Base
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertEmpty::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertEmpty::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `assert_empty`
@@ -169,34 +163,34 @@ class RuboCop::Cop::Minitest::AssertEqual < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertEqual::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertEqual::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `assert_in_delta`
@@ -242,34 +236,34 @@ class RuboCop::Cop::Minitest::AssertIncludes < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertIncludes::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertIncludes::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `assert_instance_of(Class, object)`
@@ -291,34 +285,34 @@ class RuboCop::Cop::Minitest::AssertInstanceOf < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertInstanceOf::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertInstanceOf::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `assert_kind_of(Class, object)`
@@ -340,34 +334,34 @@ class RuboCop::Cop::Minitest::AssertKindOf < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertKindOf::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertKindOf::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `assert_match`
@@ -376,47 +370,49 @@ RuboCop::Cop::Minitest::AssertKindOf::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Ar
 # @example
 #   # bad
 #   assert(matcher.match(string))
+#   assert(matcher.match?(string))
+#   assert(matcher =~ string)
 #   assert(matcher.match(string), 'message')
 #
 #   # good
 #   assert_match(regex, string)
 #   assert_match(matcher, string, 'message')
 #
-# source://rubocop-minitest//lib/rubocop/cop/minitest/assert_match.rb#18
+# source://rubocop-minitest//lib/rubocop/cop/minitest/assert_match.rb#20
 class RuboCop::Cop::Minitest::AssertMatch < ::RuboCop::Cop::Base
   include ::RuboCop::Cop::RangeHelp
   include ::RuboCop::Cop::ArgumentRangeHelper
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertMatch::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertMatch::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `assert_nil` instead of using
@@ -488,7 +484,7 @@ class RuboCop::Cop::Minitest::AssertOutput < ::RuboCop::Cop::Base
 
   # @return [Boolean]
   #
-  # source://rubocop-minitest//lib/rubocop/cop/minitest/assert_output.rb#43
+  # source://rubocop-minitest//lib/rubocop/cop/minitest/assert_output.rb#42
   def references_gvar?(assertion, gvar_name); end
 end
 
@@ -653,34 +649,34 @@ class RuboCop::Cop::Minitest::AssertRespondTo < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertRespondTo::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertRespondTo::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the use of `assert_same(expected, actual)`
@@ -703,34 +699,34 @@ class RuboCop::Cop::Minitest::AssertSame < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::AssertSame::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::AssertSame::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `assert_silent { ... }`
@@ -1111,6 +1107,77 @@ RuboCop::Cop::Minitest::GlobalExpectations::RESTRICT_ON_SEND = T.let(T.unsafe(ni
 # source://rubocop-minitest//lib/rubocop/cop/minitest/global_expectations.rb#90
 RuboCop::Cop::Minitest::GlobalExpectations::VALUE_MATCHERS = T.let(T.unsafe(nil), Array)
 
+# Checks that lifecycle hooks are declared in the order in which they will be executed.
+#
+# @example
+#   # bad
+#   class FooTest < Minitest::Test
+#   def teardown; end
+#   def setup; end
+#   end
+#
+#   # good
+#   class FooTest < Minitest::Test
+#   def setup; end
+#   def teardown; end
+#   end
+#
+#   # bad (after test cases)
+#   class FooTest < Minitest::Test
+#   def test_something
+#   assert foo
+#   end
+#   def setup; end
+#   def teardown; end
+#   end
+#
+#   # good
+#   class FooTest < Minitest::Test
+#   def setup; end
+#   def teardown; end
+#   def test_something
+#   assert foo
+#   end
+#   end
+#
+#   # good (after non test case methods)
+#   class FooTest < Minitest::Test
+#   def do_something; end
+#   def setup; end
+#   def teardown; end
+#   end
+#
+# source://rubocop-minitest//lib/rubocop/cop/minitest/lifecycle_hooks_order.rb#46
+class RuboCop::Cop::Minitest::LifecycleHooksOrder < ::RuboCop::Cop::Base
+  include ::RuboCop::Cop::VisibilityHelp
+  include ::RuboCop::Cop::DefNode
+  include ::RuboCop::Cop::MinitestExplorationHelpers
+  include ::RuboCop::Cop::RangeHelp
+  extend ::RuboCop::Cop::AutoCorrector
+
+  # source://rubocop-minitest//lib/rubocop/cop/minitest/lifecycle_hooks_order.rb#60
+  def on_class(class_node); end
+
+  private
+
+  # source://rubocop-minitest//lib/rubocop/cop/minitest/lifecycle_hooks_order.rb#90
+  def autocorrect(corrector, previous_node, node); end
+
+  # source://rubocop-minitest//lib/rubocop/cop/minitest/lifecycle_hooks_order.rb#84
+  def hooks_and_test_cases(class_node); end
+end
+
+# source://rubocop-minitest//lib/rubocop/cop/minitest/lifecycle_hooks_order.rb#55
+RuboCop::Cop::Minitest::LifecycleHooksOrder::HOOKS_ORDER_MAP = T.let(T.unsafe(nil), Hash)
+
+# source://rubocop-minitest//lib/rubocop/cop/minitest/lifecycle_hooks_order.rb#51
+RuboCop::Cop::Minitest::LifecycleHooksOrder::MSG = T.let(T.unsafe(nil), String)
+
+# Regular method's position should be last.
+#
+# source://rubocop-minitest//lib/rubocop/cop/minitest/lifecycle_hooks_order.rb#54
+RuboCop::Cop::Minitest::LifecycleHooksOrder::REGULAR_METHOD_POSITION = T.let(T.unsafe(nil), Integer)
+
 # Enforces correct order of expected and
 # actual arguments for `assert_equal`.
 #
@@ -1366,7 +1433,7 @@ class RuboCop::Cop::Minitest::RefuteEmpty < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
   # source://rubocop-minitest//lib/rubocop/cop/minitest/refute_empty.rb#23
@@ -1374,26 +1441,26 @@ class RuboCop::Cop::Minitest::RefuteEmpty < ::RuboCop::Cop::Base
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::RefuteEmpty::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::RefuteEmpty::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the use of `refute_equal(expected, object)`
@@ -1524,34 +1591,34 @@ class RuboCop::Cop::Minitest::RefuteIncludes < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::RefuteIncludes::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::RefuteIncludes::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the use of `refute_instance_of(Class, object)`
@@ -1573,34 +1640,34 @@ class RuboCop::Cop::Minitest::RefuteInstanceOf < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::RefuteInstanceOf::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::RefuteInstanceOf::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the use of `refute_kind_of(Class, object)`
@@ -1622,34 +1689,34 @@ class RuboCop::Cop::Minitest::RefuteKindOf < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::RefuteKindOf::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::RefuteKindOf::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `refute_match`
@@ -1658,47 +1725,49 @@ RuboCop::Cop::Minitest::RefuteKindOf::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Ar
 # @example
 #   # bad
 #   refute(matcher.match(string))
+#   refute(matcher.match?(string))
+#   refute(matcher =~ string)
 #   refute(matcher.match(string), 'message')
 #
 #   # good
 #   refute_match(matcher, string)
 #   refute_match(matcher, string, 'message')
 #
-# source://rubocop-minitest//lib/rubocop/cop/minitest/refute_match.rb#18
+# source://rubocop-minitest//lib/rubocop/cop/minitest/refute_match.rb#20
 class RuboCop::Cop::Minitest::RefuteMatch < ::RuboCop::Cop::Base
   include ::RuboCop::Cop::RangeHelp
   include ::RuboCop::Cop::ArgumentRangeHelper
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::RefuteMatch::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::RefuteMatch::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the test to use `refute_nil` instead of using
@@ -1827,34 +1896,34 @@ class RuboCop::Cop::Minitest::RefuteRespondTo < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::RefuteRespondTo::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::RefuteRespondTo::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Enforces the use of `refute_same(expected, object)`
@@ -1877,34 +1946,34 @@ class RuboCop::Cop::Minitest::RefuteSame < ::RuboCop::Cop::Base
   extend ::RuboCop::Cop::MinitestCopRule
   extend ::RuboCop::Cop::AutoCorrector
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#47
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#58
   def autocorrect(corrector, node, arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#36
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#46
   def on_send(node); end
 
   private
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#99
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#110
   def correct_receiver(receiver); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#106
   def enclosed_in_redundant_parentheses?(node); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#81
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#92
   def new_arguments(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#67
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#78
   def offense_message(arguments); end
 
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#61
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#72
   def peel_redundant_parentheses_from(arguments); end
 end
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#33
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#43
 RuboCop::Cop::Minitest::RefuteSame::MSG = T.let(T.unsafe(nil), String)
 
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#34
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#44
 RuboCop::Cop::Minitest::RefuteSame::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 
 # Checks that `ensure` call even if `skip`. It is unexpected that `ensure` will be called when skipping test.
@@ -2241,16 +2310,20 @@ module RuboCop::Cop::MinitestCopRule
   #   define_rule :refute, target_method: :match
   #   define_rule :assert, target_method: :include?, preferred_method: :assert_includes
   #   define_rule :assert, target_method: :instance_of?, inverse: true
+  # @example Multiple target methods
+  #   # `preferred_method` is required
+  #   define_rule :assert, target_method: %i[match match? =~],
+  #   preferred_method: :assert_match, inverse: 'regexp_type?'
   # @param assertion_method [Symbol] Assertion method like `assert` or `refute`.
-  # @param target_method [Symbol] Method name offensed by assertion method arguments.
-  # @param preferred_method [Symbol] An optional param. Custom method name replaced by
+  # @param target_method [Symbol, Array<Symbol>] Method name(s) offensed by assertion method arguments.
+  # @param preferred_method [Symbol] Is required if passing multiple target methods. Custom method name replaced by
   #   autocorrection. The preferred method name that connects
   #   `assertion_method` and `target_method` with `_` is
   #   the default name.
   # @param inverse [Boolean, String] An optional param. Order of arguments replaced by autocorrection.
   #   If string is passed, it becomes a predicate method for the first argument node.
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#26
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_cop_rule.rb#31
   def define_rule(assertion_method, target_method:, preferred_method: T.unsafe(nil), inverse: T.unsafe(nil)); end
 end
 
@@ -2269,62 +2342,68 @@ module RuboCop::Cop::MinitestExplorationHelpers
   # @api private
   # @return [Boolean]
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#95
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#102
   def assertion_method?(node); end
 
   # @api private
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#75
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#82
   def assertions(def_node); end
 
   # @api private
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#89
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#96
   def assertions_count(node); end
 
   # @api private
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#60
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#67
   def class_def_nodes(class_node); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#106
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#113
   def lifecycle_hook_method?(node); end
 
   # @api private
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#55
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#62
   def lifecycle_hooks(class_node); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#30
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#58
+  def test_block?(block_node); end
+
+  # @api private
+  # @return [Boolean]
+  #
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#32
   def test_case?(node); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#71
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#78
   def test_case_name?(name); end
 
   # @api private
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#37
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#40
   def test_cases(class_node, visibility_check: T.unsafe(nil)); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#26
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#28
   def test_class?(class_node); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#49
+  # source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#52
   def test_method?(def_node, visibility_check: T.unsafe(nil)); end
 end
 
@@ -2335,8 +2414,13 @@ RuboCop::Cop::MinitestExplorationHelpers::ASSERTION_PREFIXES = T.let(T.unsafe(ni
 
 # @api private
 #
-# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#15
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#24
 RuboCop::Cop::MinitestExplorationHelpers::LIFECYCLE_HOOK_METHODS = T.let(T.unsafe(nil), Set)
+
+# @api private
+#
+# source://rubocop-minitest//lib/rubocop/cop/mixin/minitest_exploration_helpers.rb#15
+RuboCop::Cop::MinitestExplorationHelpers::LIFECYCLE_HOOK_METHODS_IN_ORDER = T.let(T.unsafe(nil), Array)
 
 # RuboCop minitest project namespace
 #
@@ -2375,12 +2459,3 @@ end
 
 # source://rubocop-minitest//lib/rubocop/minitest/version.rb#7
 RuboCop::Minitest::Version::STRING = T.let(T.unsafe(nil), String)
-
-# source://rubocop/1.44.1/lib/rubocop/ast_aliases.rb#5
-RuboCop::NodePattern = RuboCop::AST::NodePattern
-
-# source://rubocop/1.44.1/lib/rubocop/ast_aliases.rb#6
-RuboCop::ProcessedSource = RuboCop::AST::ProcessedSource
-
-# source://rubocop/1.44.1/lib/rubocop/ast_aliases.rb#7
-RuboCop::Token = RuboCop::AST::Token

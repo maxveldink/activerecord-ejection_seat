@@ -420,18 +420,18 @@ class RuboCop::AST::Builder < ::Parser::Builders::Default
   #
   # @return [Node] the generated node
   #
-  # source://rubocop-ast//lib/rubocop/ast/builder.rb#97
+  # source://rubocop-ast//lib/rubocop/ast/builder.rb#98
   def n(type, children, source_map); end
 
   # TODO: Figure out what to do about literal encoding handling...
   # More details here https://github.com/whitequark/parser/issues/283
   #
-  # source://rubocop-ast//lib/rubocop/ast/builder.rb#103
+  # source://rubocop-ast//lib/rubocop/ast/builder.rb#104
   def string_value(token); end
 
   private
 
-  # source://rubocop-ast//lib/rubocop/ast/builder.rb#109
+  # source://rubocop-ast//lib/rubocop/ast/builder.rb#110
   def node_klass(type); end
 end
 
@@ -1373,8 +1373,8 @@ module RuboCop::AST::Ext::Range
   #     :bar
   #   ]
   #
-  #   node.loc.begin.line_span                         # => 1..1
-  #   node.loc.expression.line_span(exclude_end: true) # => 1...4
+  #   node.loc.begin.line_span                       # => 1..1
+  #   node.source_range.line_span(exclude_end: true) # => 1...4
   #
   # @return [Range] the range of line numbers for the node
   #
@@ -1961,9 +1961,9 @@ class RuboCop::AST::IntNode < ::RuboCop::AST::Node
   include ::RuboCop::AST::NumericNode
 end
 
-# A node extension for `kwsplat` nodes. This will be used in place of a
-# plain  node when the builder constructs the AST, making its methods
-# available to all `kwsplat` nodes within RuboCop.
+# A node extension for `kwsplat` and `forwarded_kwrestarg` nodes. This will be used in
+# place of a plain node when the builder constructs the AST, making its methods available to
+# all `kwsplat` and `forwarded_kwrestarg` nodes within RuboCop.
 #
 # source://rubocop-ast//lib/rubocop/ast/node/keyword_splat_node.rb#8
 class RuboCop::AST::KeywordSplatNode < ::RuboCop::AST::Node
@@ -1984,6 +1984,13 @@ class RuboCop::AST::KeywordSplatNode < ::RuboCop::AST::Node
   #
   # source://rubocop-ast//lib/rubocop/ast/node/keyword_splat_node.rb#18
   def hash_rocket?; end
+
+  # This provides `forwarded_kwrestarg` node to return true to be compatible with `kwsplat` node.
+  #
+  # @return [true]
+  #
+  # source://rubocop-ast//lib/rubocop/ast/node/keyword_splat_node.rb#48
+  def kwsplat_type?; end
 
   # Custom destructuring method. This is used to normalize the branches
   # for `pair` and `kwsplat` nodes, to add duck typing to `hash` elements.
@@ -4695,6 +4702,9 @@ class RuboCop::AST::NodePattern::Node < ::Parser::AST::Node
   # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#19
   def rest?; end
 
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#78
+  def source_range; end
+
   # @return [Boolean] returns whether it matches a variable number of elements
   #
   # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#58
@@ -4706,67 +4716,67 @@ end
 
 # Node class for `<int str ...>`
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#176
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#180
 class RuboCop::AST::NodePattern::Node::AnyOrder < ::RuboCop::AST::NodePattern::Node
   include ::RuboCop::AST::NodePattern::Node::ForbidInSeqHead
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#194
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#198
   def arity; end
 
   # @return [Boolean]
   #
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#186
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#190
   def ends_with_rest?; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#190
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#194
   def rest_node; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#182
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#186
   def term_nodes; end
 end
 
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#179
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#183
 RuboCop::AST::NodePattern::Node::AnyOrder::ARITIES = T.let(T.unsafe(nil), Hash)
 
 # Node class for `$something`
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#93
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#97
 class RuboCop::AST::NodePattern::Node::Capture < ::RuboCop::AST::NodePattern::Node
   # source://forwardable/1.3.3/forwardable.rb#231
   def arity(*args, **_arg1, &block); end
 
   # @return [Boolean]
   #
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#97
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#101
   def capture?; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#105
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#109
   def in_sequence_head; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#101
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#105
   def nb_captures; end
 
   # source://forwardable/1.3.3/forwardable.rb#231
   def rest?(*args, **_arg1, &block); end
 end
 
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#82
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#86
 module RuboCop::AST::NodePattern::Node::ForbidInSeqHead
   # @raise [NodePattern::Invalid]
   #
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#83
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#87
   def in_sequence_head; end
 end
 
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#136
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#140
 RuboCop::AST::NodePattern::Node::FunctionCall = RuboCop::AST::NodePattern::Node::Predicate
 
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#78
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#82
 RuboCop::AST::NodePattern::Node::INT_TO_RANGE = T.let(T.unsafe(nil), Hash)
 
 # Registry
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#246
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#250
 RuboCop::AST::NodePattern::Node::MAP = T.let(T.unsafe(nil), Hash)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#12
@@ -4774,83 +4784,83 @@ RuboCop::AST::NodePattern::Node::MATCHES_WITHIN_SET = T.let(T.unsafe(nil), Set)
 
 # Node class for `predicate?(:arg, :list)`
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#127
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#131
 class RuboCop::AST::NodePattern::Node::Predicate < ::RuboCop::AST::NodePattern::Node
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#132
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#136
   def arg_list; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#128
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#132
   def method_name; end
 end
 
 # Node class for `int+`
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#139
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#143
 class RuboCop::AST::NodePattern::Node::Repetition < ::RuboCop::AST::NodePattern::Node
   include ::RuboCop::AST::NodePattern::Node::ForbidInSeqHead
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#152
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#156
   def arity; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#142
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#146
   def operator; end
 end
 
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#146
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#150
 RuboCop::AST::NodePattern::Node::Repetition::ARITIES = T.let(T.unsafe(nil), Hash)
 
 # Node class for `...`
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#158
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#162
 class RuboCop::AST::NodePattern::Node::Rest < ::RuboCop::AST::NodePattern::Node
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#166
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#170
   def arity; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#170
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#174
   def in_sequence_head; end
 
   # @return [Boolean]
   #
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#162
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#166
   def rest?; end
 end
 
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#159
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#163
 RuboCop::AST::NodePattern::Node::Rest::ARITY = T.let(T.unsafe(nil), Range)
 
 # Node class for `(type first second ...)`
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#114
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#118
 class RuboCop::AST::NodePattern::Node::Sequence < ::RuboCop::AST::NodePattern::Node
   include ::RuboCop::AST::NodePattern::Node::ForbidInSeqHead
 
   # @return [Sequence] a new instance of Sequence
   #
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#117
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#121
   def initialize(type, children = T.unsafe(nil), properties = T.unsafe(nil)); end
 end
 
 # A list (potentially empty) of nodes; part of a Union
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#202
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#206
 class RuboCop::AST::NodePattern::Node::Subsequence < ::RuboCop::AST::NodePattern::Node
   include ::RuboCop::AST::NodePattern::Node::ForbidInSeqHead
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#205
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#209
   def arity; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#210
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#214
   def in_sequence_head; end
 end
 
 # Node class for `{ ... }`
 #
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#220
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#224
 class RuboCop::AST::NodePattern::Node::Union < ::RuboCop::AST::NodePattern::Node
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#221
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#225
   def arity; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#228
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/node.rb#232
   def in_sequence_head; end
 end
 
@@ -5050,15 +5060,15 @@ RuboCop::AST::NodePattern::Parser::Racc_token_to_s_table = T.let(T.unsafe(nil), 
 class RuboCop::AST::NodePattern::Parser::WithMeta < ::RuboCop::AST::NodePattern::Parser
   # Returns the value of attribute comments.
   #
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#99
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#98
   def comments; end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#101
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#100
   def do_parse; end
 
   # Returns the value of attribute tokens.
   #
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#99
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#98
   def tokens; end
 end
 
@@ -5089,7 +5099,7 @@ class RuboCop::AST::NodePattern::Parser::WithMeta::Builder < ::RuboCop::AST::Nod
   # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#71
   def n(type, children, source_map); end
 
-  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#86
+  # source://rubocop-ast//lib/rubocop/ast/node_pattern/with_meta.rb#85
   def source_map(token_or_range, begin_t: T.unsafe(nil), end_t: T.unsafe(nil), operator_t: T.unsafe(nil), selector_t: T.unsafe(nil)); end
 end
 
@@ -5226,6 +5236,12 @@ RuboCop::AST::NodePattern::Sets::SET_FILETEST_FILE_DIR_SHELL = T.let(T.unsafe(ni
 RuboCop::AST::NodePattern::Sets::SET_FILE_DIR = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
+RuboCop::AST::NodePattern::Sets::SET_FILE_FILETEST = T.let(T.unsafe(nil), Set)
+
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
+RuboCop::AST::NodePattern::Sets::SET_FILE_TEMPFILE_STRINGIO = T.let(T.unsafe(nil), Set)
+
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
 RuboCop::AST::NodePattern::Sets::SET_FIRST_LAST__ETC = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
@@ -5268,6 +5284,9 @@ RuboCop::AST::NodePattern::Sets::SET_LOAD_RESTORE = T.let(T.unsafe(nil), Set)
 RuboCop::AST::NodePattern::Sets::SET_MAP_COLLECT = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
+RuboCop::AST::NodePattern::Sets::SET_MODULE_FUNCTION_RUBY2_KEYWORDS = T.let(T.unsafe(nil), Set)
+
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
 RuboCop::AST::NodePattern::Sets::SET_NEW_ = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
@@ -5304,6 +5323,9 @@ RuboCop::AST::NodePattern::Sets::SET_RAISE_FAIL = T.let(T.unsafe(nil), Set)
 RuboCop::AST::NodePattern::Sets::SET_RAISE_FAIL_THROW_ETC = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
+RuboCop::AST::NodePattern::Sets::SET_READ_BINREAD = T.let(T.unsafe(nil), Set)
+
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
 RuboCop::AST::NodePattern::Sets::SET_REDUCE_INJECT = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
@@ -5335,9 +5357,6 @@ RuboCop::AST::NodePattern::Sets::SET_SUCC_PRED_NEXT = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
 RuboCop::AST::NodePattern::Sets::SET_TASK_NAMESPACE = T.let(T.unsafe(nil), Set)
-
-# source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
-RuboCop::AST::NodePattern::Sets::SET_TEMPFILE_STRINGIO = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
 RuboCop::AST::NodePattern::Sets::SET_TO_ENUM_ENUM_FOR = T.let(T.unsafe(nil), Set)
@@ -5392,6 +5411,12 @@ RuboCop::AST::NodePattern::Sets::SET___6 = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
 RuboCop::AST::NodePattern::Sets::SET___7 = T.let(T.unsafe(nil), Set)
+
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
+RuboCop::AST::NodePattern::Sets::SET___8 = T.let(T.unsafe(nil), Set)
+
+# source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
+RuboCop::AST::NodePattern::Sets::SET___9 = T.let(T.unsafe(nil), Set)
 
 # source://rubocop-ast//lib/rubocop/ast/node_pattern/sets.rb#10
 RuboCop::AST::NodePattern::Sets::SET___EQL_ETC = T.let(T.unsafe(nil), Set)
@@ -7023,12 +7048,3 @@ class RuboCop::AST::YieldNode < ::RuboCop::AST::Node
   # source://rubocop-ast//lib/rubocop/ast/node/yield_node.rb#16
   def node_parts; end
 end
-
-# source://rubocop/1.45.1/lib/rubocop/ast_aliases.rb#5
-RuboCop::NodePattern = RuboCop::AST::NodePattern
-
-# source://rubocop/1.45.1/lib/rubocop/ast_aliases.rb#6
-RuboCop::ProcessedSource = RuboCop::AST::ProcessedSource
-
-# source://rubocop/1.45.1/lib/rubocop/ast_aliases.rb#7
-RuboCop::Token = RuboCop::AST::Token

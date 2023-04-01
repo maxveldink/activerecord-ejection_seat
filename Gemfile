@@ -14,8 +14,6 @@ group :development do
   gem "sorbet"
   gem "spoom", require: false
   gem "tapioca", require: false
-
-  gem "ruby-lsp"
 end
 
 group :development, :test do
