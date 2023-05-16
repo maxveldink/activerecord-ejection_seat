@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2023-05-16
+
+### Security
+
+- Updates dependencies
+
 ## [0.1.0] - 2022-07-22
 ### Added
 - Adds `.ejects_to` to `ActiveRecord::Base` that can be used to specify a Sorbet `T::Struct` that can be converted for that model.

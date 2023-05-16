@@ -1,10 +1,7 @@
 name: Code Quality
 
 on:
-  push:
-    branches:
-      - main
-
+  workflow_call:
   pull_request:
 
 jobs:
