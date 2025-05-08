@@ -35,9 +35,21 @@ class PropsBuilder
     cast_attribute(attribute, prop_type)
   end
 
-  sig { params(attribute: T.untyped, prop_type: Class).returns(T.untyped) }
-  def cast_attribute(attribute, prop_type)
-    if prop_type < T::Enum
+  sig do
+    params(
+      attribute: T.untyped,
+      prop_type: T.any(T::Class[T.anything], ::T::Private::Types::SimplePairUnion)
+    ).returns(T.untyped)
+  end
+  def cast_attribute(attribute, prop_type) # rubocop:disable Metrics/MethodLength
+    if prop_type.is_a? ::T::Private::Types::SimplePairUnion
+      if prop_type == T::Boolean
+        attribute
+      else
+        # fallback for other two‐member unions
+        prop_type.deserialize(attribute)
+      end
+    elsif prop_type < T::Enum
       prop_type.deserialize(attribute)
     elsif prop_type < T::Struct
       prop_type.new(PropsBuilder.new(model: attribute, target_struct: prop_type).build)

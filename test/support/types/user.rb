@@ -8,5 +8,6 @@ module Types
     const :name, String
     const :age, Integer
     const :location, Location
+    const :is_active, T::Boolean
   end
 end

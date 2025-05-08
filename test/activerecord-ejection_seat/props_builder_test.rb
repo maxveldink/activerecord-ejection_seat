@@ -33,9 +33,10 @@ class PropsBuilderTest < Minitest::Test
   end
 
   def test_when_type_needs_t_struct_and_correct_initialization_occurs_it_builds_correctly
-    user = User.new(name: "Max", age: 28, location: Location.new(name: "Florida"))
+    user = User.new(name: "Max", age: 28, location: Location.new(name: "Florida"), is_active: true)
     builder = PropsBuilder.new(model: user, target_struct: Types::User)
 
-    assert_equal({ name: "Max", age: 28, location: Types::Location.new(name: "Florida") }, builder.build)
+    assert_equal({ name: "Max", age: 28, location: Types::Location.new(name: "Florida"), is_active: true },
+                 builder.build)
   end
 end

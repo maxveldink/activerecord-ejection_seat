@@ -1,9 +1,9 @@
 # typed: strict
 # frozen_string_literal: true
 
-ActiveRecord::Schema.define do
+ActiveRecord::Schema.define do # rubocop:disable Metrics/BlockLength
   create_table :schema_info, force: :cascade do |t|
-    t.integer :version, unique: true
+    t.integer :version
   end
   SchemaInfo.create version: SchemaInfo::VERSION
 
@@ -11,6 +11,7 @@ ActiveRecord::Schema.define do
     t.string :name
     t.integer :age
     t.integer :location_id
+    t.boolean :is_active
   end
 
   create_table :posts, force: :cascade do |t|

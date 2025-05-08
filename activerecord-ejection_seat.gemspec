@@ -35,6 +35,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "activerecord", ">= 6.0"
-  spec.add_runtime_dependency "sorbet-runtime"
+  spec.add_dependency "activerecord", ">= 6.0"
+  spec.add_dependency "sorbet-runtime"
 end

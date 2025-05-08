@@ -21,7 +21,7 @@ class AttributesBuilderTest < Minitest::Test
   end
 
   def test_when_model_contains_belongs_to_association_it_build_correctly
-    user = Types::User.new(name: "Max", age: 28, location: Types::Location.new(name: "Florida"))
+    user = Types::User.new(name: "Max", age: 28, location: Types::Location.new(name: "Florida"), is_active: false)
     builder = AttributesBuilder.new(struct: user, target_model: User)
 
     built_attributes = builder.build
