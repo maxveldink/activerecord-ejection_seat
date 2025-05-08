@@ -8,7 +8,7 @@ class EjectableTest < Minitest::Test
     @location_model = Location.new(name: "Florida")
     @location_struct = Types::Location.new(name: "Florida")
     @post_struct = Types::Post.new(title: "Testing 123", status: Types::PostStatus::Draft)
-    @user_struct = Types::User.new(name: "Max", age: 28, location: @location_struct)
+    @user_struct = Types::User.new(name: "Max", age: 28, location: @location_struct, is_active: true)
   end
 
   def test_eject_handles_simple_fields
@@ -28,7 +28,7 @@ class EjectableTest < Minitest::Test
   end
 
   def test_eject_can_handle_t_struct
-    user_model = User.new(name: "Max", age: 28, location: @location_model)
+    user_model = User.new(name: "Max", age: 28, location: @location_model, is_active: true)
 
     assert_equal user_model.eject, @user_struct
   end
