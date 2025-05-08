@@ -1,7 +1,7 @@
 # typed: strict
 # frozen_string_literal: true
 
-require_relative "./post_status"
+require_relative "post_status"
 
 module Types
   class Post < T::Struct
