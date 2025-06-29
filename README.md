@@ -1,6 +1,6 @@
 # ActiveRecord::EjectionSeat
 
-[![IMAGE ALT TEXT](https://img.youtube.com/vi/HfCY-bkVJKM/0.jpg)](http://www.youtube.com/watch?v=HfCY-bkVJKM "Introduction to activerecord-ejection_seat")
+**DEPRECATED** - Future work here will be done in [sorbet-schema](https://github.com/maxveldink/sorbet-schema). This will be moved in as a serializer plugin. Open an issue on this repo if you're waiting on the migration to complete.
 
 ## ActiveRecord <=> T::Struct
 
